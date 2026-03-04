@@ -10,7 +10,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .excel-header { background-color: #217346; }
-        .tab-active { border-bottom: 3px solid #217346; color: #217346; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -48,7 +47,7 @@
                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Formatting Cells</li>
                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Worksheet Basics</li>
                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Page Layout & Printing</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Data Format</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Data Format (Currency & Date)</li>
                     </ul>
                 </div>
 
@@ -82,8 +81,8 @@
                                 <p class="text-sm text-gray-600">Ubah tampilan teks di tab <strong>Home</strong> (Bold, Color, Merge & Center, Borders).</p>
                             </div>
                             <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
-                                <h4 class="font-bold text-gray-800 mb-1">Data Format</h4>
-                                <p class="text-sm text-gray-600">Atur tipe data (Currency, Date, Percentage) pada grup <strong>Number</strong> di tab Home.</p>
+                                <h4 class="font-bold text-gray-800 mb-1">Number & Date Format</h4>
+                                <p class="text-sm text-gray-600">Atur tipe data (Currency, Short/Long Date, Percentage) pada grup <strong>Number</strong> di tab Home.</p>
                             </div>
                         </div>
                     </div>
@@ -102,6 +101,7 @@
                             <thead class="bg-gray-100 text-gray-700">
                                 <tr>
                                     <th class="border p-2">No</th>
+                                    <th class="border p-2">Tanggal</th>
                                     <th class="border p-2 text-nowrap">Nama Barang</th>
                                     <th class="border p-2">Harga Satuan</th>
                                     <th class="border p-2 text-center">Jumlah</th>
@@ -109,11 +109,11 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600">
-                                <tr><td class="border p-2">1</td><td class="border p-2">Kertas HVS A4 80gr</td><td class="border p-2">55000</td><td class="border p-2 text-center">10</td><td class="border p-2">550000</td></tr>
-                                <tr><td class="border p-2">2</td><td class="border p-2">Tinta Printer Hitam</td><td class="border p-2">95000</td><td class="border p-2 text-center">5</td><td class="border p-2">475000</td></tr>
-                                <tr><td class="border p-2">3</td><td class="border p-2">Tinta Printer Warna</td><td class="border p-2">110000</td><td class="border p-2 text-center">3</td><td class="border p-2">330000</td></tr>
-                                <tr><td class="border p-2">4</td><td class="border p-2">Map Folder Plastik</td><td class="border p-2">3500</td><td class="border p-2 text-center">50</td><td class="border p-2">175000</td></tr>
-                                <tr><td class="border p-2">5</td><td class="border p-2">Staples Medium</td><td class="border p-2">15000</td><td class="border p-2 text-center">12</td><td class="border p-2">180000</td></tr>
+                                <tr><td class="border p-2">1</td><td class="border p-2 text-nowrap">01/03/2024</td><td class="border p-2">Kertas HVS A4 80gr</td><td class="border p-2">55000</td><td class="border p-2 text-center">10</td><td class="border p-2">550000</td></tr>
+                                <tr><td class="border p-2">2</td><td class="border p-2 text-nowrap">02/03/2024</td><td class="border p-2">Tinta Printer Hitam</td><td class="border p-2">95000</td><td class="border p-2 text-center">5</td><td class="border p-2">475000</td></tr>
+                                <tr><td class="border p-2">3</td><td class="border p-2 text-nowrap">02/03/2024</td><td class="border p-2">Tinta Printer Warna</td><td class="border p-2">110000</td><td class="border p-2 text-center">3</td><td class="border p-2">330000</td></tr>
+                                <tr><td class="border p-2">4</td><td class="border p-2 text-nowrap">03/03/2024</td><td class="border p-2">Map Folder Plastik</td><td class="border p-2">3500</td><td class="border p-2 text-center">50</td><td class="border p-2">175000</td></tr>
+                                <tr><td class="border p-2">5</td><td class="border p-2 text-nowrap">04/03/2024</td><td class="border p-2">Staples Medium</td><td class="border p-2">15000</td><td class="border p-2 text-center">12</td><td class="border p-2">180000</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -125,23 +125,28 @@
                     <div class="space-y-4">
                         <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
                             <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
-                            <span class="text-gray-700">Buat tabel di atas dengan kolom yang rapi (Arahkan kursor di antara huruf kolom lalu tarik).</span>
+                            <span class="text-gray-700 font-semibold">Tugas 1:</span>
+                            <span class="text-gray-600">Buat tabel dengan kolom yang rapi (Arahkan kursor di antara huruf kolom lalu tarik).</span>
                         </label>
                         <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
                             <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
-                            <span class="text-gray-700">Beri warna background pada header tabel (Fill Color) dan beri garis pembatas (All Borders).</span>
+                            <span class="text-gray-700 font-semibold">Tugas 2:</span>
+                            <span class="text-gray-600">Ubah format pada kolom <strong>Tanggal</strong> menjadi <strong>Long Date</strong> (misal: 1 March 2024) melalui menu Number.</span>
                         </label>
                         <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
                             <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
-                            <span class="text-gray-700">Ubah format angka pada kolom <strong>Harga Satuan</strong> & <strong>Total</strong> menjadi Mata Uang (Currency/Accounting Rp).</span>
+                            <span class="text-gray-700 font-semibold">Tugas 3:</span>
+                            <span class="text-gray-600">Ubah format angka pada kolom <strong>Harga Satuan</strong> & <strong>Total</strong> menjadi Mata Uang (Currency/Accounting Rp).</span>
                         </label>
                         <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
                             <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
-                            <span class="text-gray-700">Ganti nama Worksheet (Sheet1) menjadi <strong>"Latihan 1"</strong> dengan klik kanan atau klik dua kali pada tab di bawah.</span>
+                            <span class="text-gray-700 font-semibold">Tugas 4:</span>
+                            <span class="text-gray-600">Beri warna background pada header tabel (Fill Color) dan beri garis pembatas (All Borders).</span>
                         </label>
                         <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
                             <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
-                            <span class="text-gray-700">Cek tampilan melalui <strong>File > Print</strong> (Print Preview) untuk memastikan tabel pas dalam satu halaman (Portrait).</span>
+                            <span class="text-gray-700 font-semibold">Tugas 5:</span>
+                            <span class="text-gray-600">Ganti nama Worksheet menjadi <strong>"Latihan 1"</strong> dan cek tampilan di <strong>Print Preview</strong>.</span>
                         </label>
                     </div>
                 </section>
@@ -175,7 +180,7 @@
                 document.execCommand('copy');
                 sel.removeAllRanges();
             }
-            alert("Tabel berhasil disalin! Sekarang buka Excel dan tekan Ctrl+V.");
+            alert("Data berhasil disalin!");
         }
     </script>
 </body>
