@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Pertemuan 3: Mathematical & Text Functions Excel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .excel-header { background-color: #217346; }
+        .time-badge { background-color: #e8f5e9; color: #1b5e20; }
+        .code-block { background-color: #f5f5f5; border-left: 4px solid #217346; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="excel-header text-white p-6 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-calculator text-4xl"></i>
+                <div>
+                    <h1 class="text-2xl font-bold uppercase tracking-wider">Latihan Pertemuan 3</h1>
+                    <p class="text-sm opacity-90">Materi: Mathematical & Text Functions Microsoft Excel</p>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <span class="bg-white/20 px-4 py-2 rounded-full text-xs font-semibold">MODUL PEMBELAJARAN</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Sidebar Navigation -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <!-- Learning Outcomes -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-target mr-2 text-green-600"></i> Learning Outcomes
+                    </h3>
+                    <ul class="space-y-3 text-gray-700 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C3</span>
+                            <span><strong>Apply:</strong> Menerapkan mathematical & text functions dalam konteks bisnis nyata</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C4</span>
+                            <span><strong>Analyze:</strong> Menganalisis data dengan perhitungan dan manipulasi teks otomatis</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Daftar Materi -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-list-ol mr-2 text-green-600"></i> Materi Pembelajaran
+                    </h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> SUM() - Penjumlahan</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> AVERAGE() - Rata-rata</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> MIN() - Nilai Minimum</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> MAX() - Nilai Maximum</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> COUNT() - Penghitung</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> LEFT() - Ambil Kiri</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> RIGHT() - Ambil Kanan</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> MID() - Ambil Tengah</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> CONCATENATE() - Gabung Teks</li>
+                    </ul>
+                </div>
+
+                <!-- Tips Box -->
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <h4 class="font-bold text-green-900 mb-2 flex items-center">
+                        <i class="fas fa-lightbulb mr-2"></i> Tips Efisiensi
+                    </h4>
+                    <ul class="text-sm text-green-800 space-y-1 list-disc list-inside">
+                        <li>Double-click fill handle untuk auto-fill</li>
+                        <li>Gunakan & untuk CONCATENATE (lebih cepat)</li>
+                        <li>Test formula di sel terpisah dulu</li>
+                        <li>Format kolom numerik sebagai Number</li>
+                    </ul>
+                </div>
+
+                <!-- Duration -->
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-blue-900 mb-2 flex items-center">
+                        <i class="fas fa-clock mr-2"></i> Alokasi Waktu
+                    </h4>
+                    <div class="text-sm text-blue-800 space-y-2">
+                        <p><strong>LEVEL 1:</strong> 40 menit (Dasar)</p>
+                        <p><strong>LEVEL 2:</strong> 50 menit (Lanjutan)</p>
+                        <p><strong>Finalisasi:</strong> 10 menit (Buffer)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+
+                <!-- BLOK 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 1: Fungsi Agregasi Numerik (SUM, AVERAGE, MIN, MAX)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.1 SUM()</h4>
+                            <p><strong>Definisi:</strong> Menjumlahkan semua angka dalam range tertentu.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=SUM(range)</code>
+                            </div>
+                            <p><strong>Kegunaan:</strong> Total penjualan, total biaya, total unit inventory.</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.2 AVERAGE()</h4>
+                            <p><strong>Definisi:</strong> Menghitung rata-rata dari angka dalam range.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=AVERAGE(range)</code>
+                            </div>
+                            <p><strong>Kegunaan:</strong> Rata-rata penjualan harian, rata-rata harga jual, KPI monitoring.</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.3 MIN() & 1.4 MAX()</h4>
+                            <p><strong>Definisi:</strong> Mencari nilai terkecil (MIN) dan terbesar (MAX) dalam range.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=MIN(range)  |  =MAX(range)</code>
+                            </div>
+                            <p><strong>Kegunaan MIN:</strong> Harga terendah, nilai transaksi terendah, alert inventory minimum.</p>
+                            <p><strong>Kegunaan MAX:</strong> Harga tertinggi, value transaksi terbesar, best performing salesman.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOK 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 2: Fungsi Penghitung (COUNT)</h3>
+                    
+                    <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                        <h4 class="font-bold mb-2">2.1 COUNT()</h4>
+                        <p><strong>Definisi:</strong> Menghitung jumlah sel yang berisi nilai numerik dalam range.</p>
+                        <div class="code-block p-2 my-2 rounded">
+                            <code>=COUNT(range)</code>
+                        </div>
+                        <p><strong>Kegunaan:</strong> Menghitung transaksi yang berhasil, unit terjual, supply counter, missing value detection.</p>
+                        <p class="text-xs text-gray-600 mt-2"><strong>Catatan:</strong> COUNT hanya menghitung angka. Gunakan COUNTA untuk text + angka.</p>
+                    </div>
+                </div>
+
+                <!-- BLOK 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 3: Fungsi Manipulasi Teks (LEFT, RIGHT, MID)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">3.1 LEFT()</h4>
+                            <p><strong>Definisi:</strong> Mengekstrak karakter pertama (dari kiri) sejumlah N dari sebuah teks.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=LEFT(text, num_chars)</code>
+                            </div>
+                            <p><strong>Contoh:</strong> Extract kode kategori dari SKU "PRDK-001" → "PRDK"</p>
+                        </div>
+
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">3.2 RIGHT()</h4>
+                            <p><strong>Definisi:</strong> Mengekstrak karakter terakhir (dari kanan) sejumlah N dari sebuah teks.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=RIGHT(text, num_chars)</code>
+                            </div>
+                            <p><strong>Contoh:</strong> Extract nomor invoice dari "INV-0326-001" → "001"</p>
+                        </div>
+
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">3.3 MID()</h4>
+                            <p><strong>Definisi:</strong> Mengekstrak sejumlah karakter dari tengah teks, mulai dari posisi tertentu.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=MID(text, start_num, num_chars)</code>
+                            </div>
+                            <p><strong>Contoh:</strong> Extract bulan dari "2026-03-29" → "03"</p>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Catatan:</strong> Start_num mulai dari 1, bukan 0!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOK 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 4: Fungsi Penggabung Teks (CONCATENATE)</h3>
+                    
+                    <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <h4 class="font-bold mb-2">4.1 CONCATENATE()</h4>
+                        <p><strong>Definisi:</strong> Menggabungkan beberapa teks/nilai menjadi satu string.</p>
+                        <div class="code-block p-2 my-2 rounded">
+                            <code>=CONCATENATE(text1, text2, ...)  atau  =text1 & text2 & ...</code>
+                        </div>
+                        <p><strong>Kegunaan:</strong> Membuat full name, alamat lengkap, invoice ID otomatis, label untuk reporting.</p>
+                        <p class="text-xs text-gray-600 mt-2"><strong>Tip:</strong> Metode & lebih cepat dan sederhana: =A1 & ", " & A2 & ", " & A3</p>
+                    </div>
+                </div>
+
+                <!-- Data Praktik -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">📊 Tabel Data Praktik: CV Komputer Indonesia</h3>
+                        <button onclick="copyTable()" class="text-xs bg-green-100 hover:bg-green-200 px-3 py-2 rounded border border-green-300 transition font-semibold text-green-700">
+                            <i class="fas fa-copy mr-1"></i> Salin Data
+                        </button>
+                    </div>
+                    
+                    <p class="text-sm text-gray-700 mb-4"><strong>Konteks:</strong> CV Komputer Indonesia menjual perangkat komputer. Data penjualan Maret 2026 perlu dianalisis untuk performance evaluation & reporting inventory.</p>
+                                        <p class="text-xs text-gray-600 mb-3"><strong>Catatan:</strong> Saat disalin, kolom nominal (Qty, Harga Unit, Total) akan dikirim sebagai Number agar tetap terbaca angka saat di-paste ke Excel.</p>
+
+                    <div class="overflow-x-auto">
+                        <table id="trainingTable" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-green-50">
+                                    <th class="border border-gray-300 p-2 text-left">No</th>
+                                    <th class="border border-gray-300 p-2 text-left">Invoice ID</th>
+                                    <th class="border border-gray-300 p-2 text-left">Salesman</th>
+                                    <th class="border border-gray-300 p-2 text-left">Produk</th>
+                                    <th class="border border-gray-300 p-2 text-right">Qty</th>
+                                    <th class="border border-gray-300 p-2 text-right">Harga Unit (Rp)</th>
+                                    <th class="border border-gray-300 p-2 text-right">Total (Rp)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">1</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-001</td>
+                                    <td class="border border-gray-300 p-2">Budi Santoso</td>
+                                    <td class="border border-gray-300 p-2">PRDK-Monitor-LG-001</td>
+                                    <td class="border border-gray-300 p-2 text-right">2</td>
+                                    <td class="border border-gray-300 p-2 text-right">1,500,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">3,000,000</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">2</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-002</td>
+                                    <td class="border border-gray-300 p-2">Ani Wijaya</td>
+                                    <td class="border border-gray-300 p-2">PRDK-Keyboard-001</td>
+                                    <td class="border border-gray-300 p-2 text-right">5</td>
+                                    <td class="border border-gray-300 p-2 text-right">500,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">2,500,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">3</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-003</td>
+                                    <td class="border border-gray-300 p-2">Rudi Firmansah</td>
+                                    <td class="border border-gray-300 p-2">PRDK-Mouse-001</td>
+                                    <td class="border border-gray-300 p-2 text-right">10</td>
+                                    <td class="border border-gray-300 p-2 text-right">150,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">1,500,000</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">4</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-004</td>
+                                    <td class="border border-gray-300 p-2">Budi Santoso</td>
+                                    <td class="border border-gray-300 p-2">PRDK-Monitor-HD-002</td>
+                                    <td class="border border-gray-300 p-2 text-right">1</td>
+                                    <td class="border border-gray-300 p-2 text-right">2,000,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">2,000,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">5</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-005</td>
+                                    <td class="border border-gray-300 p-2">Ani Wijaya</td>
+                                    <td class="border border-gray-300 p-2">PRDK-RAM-8GB-001</td>
+                                    <td class="border border-gray-300 p-2 text-right">3</td>
+                                    <td class="border border-gray-300 p-2 text-right">600,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">1,800,000</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">6</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-006</td>
+                                    <td class="border border-gray-300 p-2">Rudi Firmansah</td>
+                                    <td class="border border-gray-300 p-2">PRDK-SSD-256-001</td>
+                                    <td class="border border-gray-300 p-2 text-right">4</td>
+                                    <td class="border border-gray-300 p-2 text-right">800,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">3,200,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">7</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-007</td>
+                                    <td class="border border-gray-300 p-2">Budi Santoso</td>
+                                    <td class="border border-gray-300 p-2">PRDK-Monitor-LG-001</td>
+                                    <td class="border border-gray-300 p-2 text-right">1</td>
+                                    <td class="border border-gray-300 p-2 text-right">1,500,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">1,500,000</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">8</td>
+                                    <td class="border border-gray-300 p-2">INV-0326-008</td>
+                                    <td class="border border-gray-300 p-2">Ani Wijaya</td>
+                                    <td class="border border-gray-300 p-2">PRDK-Keyboard-001</td>
+                                    <td class="border border-gray-300 p-2 text-right">2</td>
+                                    <td class="border border-gray-300 p-2 text-right">500,000</td>
+                                    <td class="border border-gray-300 p-2 text-right">1,000,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- LEVEL 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-yellow-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">🎯 LEVEL 1: Penerapan Dasar (40 menit)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.1: SUM, AVERAGE, COUNT - Summary Analytics (12 menit)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Copy sample data (8 transaksi) ke Excel</li>
+                                <li>Buat summary box dengan 3 formula:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        Total Penjualan: =SUM(H2:H9)<br>
+                                        Rata-rata Per Transaksi: =AVERAGE(H2:H9)<br>
+                                        Jumlah Transaksi: =COUNT(F2:F9)
+                                    </div>
+                                </li>
+                                <li><strong>Analisis:</strong> Total revenue? Rata-rata nilai transaksi? Berapa banyak transaksi?</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.2: MIN & MAX - Performance Analysis (8 menit)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Ambil data total penjualan dari Latihan 1.1</li>
+                                <li>Hitung:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        Nilai Tertinggi: =MAX(H2:H9)<br>
+                                        Nilai Terendah: =MIN(H2:H9)
+                                    </div>
+                                </li>
+                                <li><strong>Interpretasi:</strong> Transaksi mana yang paling besar? Mana yang terkecil?</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.3: COUNT - Data Validation (5 menit)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Hitung total record dalam data:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =COUNT(A2:A9) atau =COUNTA(B2:B9)
+                                    </div>
+                                </li>
+                                <li><strong>Verifikasi:</strong> Apakah data lengkap? Ada yang hilang?</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LEVEL 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-green-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">🎯 LEVEL 2: Analisis Text & Calculator (50 menit)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">TAHAP A: Extract Kategori Produk dengan LEFT (8 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Gunakan kolom D (Produk): "PRDK-Monitor-LG-001"</li>
+                                <li>Di kolom E buat formula:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =LEFT(D2, 4)  → Hasil: "PRDK"
+                                    </div>
+                                </li>
+                                <li>Drag formula ke semua row (E2:E9)</li>
+                                <li><strong>Verifikasi:</strong> Apakah semua kategori ter-extract benar?</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">TAHAP B: Extract Invoice Number dengan RIGHT (7 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Gunakan kolom B (Invoice ID): "INV-0326-001"</li>
+                                <li>Buat kolom baru dengan formula:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =RIGHT(B2, 3)  → Hasil: "001"
+                                    </div>
+                                </li>
+                                <li>Drag formula ke semua row</li>
+                                <li><strong>Analisis:</strong> Nomor invoice tertinggi = MAX(kolom ini)</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">TAHAP C: Create Report Label dengan CONCATENATE (15 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Buat kolom "Report Label" dengan format label yang informatif:</li>
+                                <li class="ml-4 bg-green-100 px-3 py-2 rounded font-mono text-xs">="Transaksi " & B2 & " | " & C2 & " | Qty: " & F2 & " unit"</li>
+                                <li>Contoh output: "Transaksi INV-0326-001 | Budi Santoso | Qty: 2 unit"</li>
+                                <li>Drag formula ke semua row</li>
+                                <li><strong>Interpretasi:</strong> Setiap baris punya report label yang lengkap dan readable</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">Latihan 2.2: Dashboard dengan Summary & Extracted Data (20 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li><strong>Buat Dashboard Area</strong> dengan metrics:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        Total Penjualan (SUM)<br>
+                                        Rata-rata Per Transaksi (AVERAGE)<br>
+                                        Transaksi Tertinggi (MAX)<br>
+                                        Transaksi Terendah (MIN)<br>
+                                        Total Transaksi (COUNT)
+                                    </div>
+                                </li>
+                                <li><strong>Interpretasi Dashboard:</strong>
+                                    <ul class="list-disc list-inside ml-4">
+                                        <li>Siapa best salesman?</li>
+                                        <li>Produk apa yang paling laris?</li>
+                                        <li>Apakah penjualan merata atau ada spike?</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checklist & Submission -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Checklist & Pengumpulan</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div>
+                            <h4 class="font-bold mb-2">Checklist Pengerjaan (90 menit):</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 1 (40 min): Latihan 1.1, 1.2, 1.3 selesai tanpa error</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 2 (50 min): TAHAP A, B, C + Dashboard selesai</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-3 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Rubric Penilaian:</h4>
+                            <table class="w-full text-xs">
+                                <tr class="border-b border-green-200">
+                                    <td class="p-2"><strong>C3 (Apply)</strong></td>
+                                    <td class="p-2">Semua formula diinput benar, output sesuai harapan</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2"><strong>C4 (Analyze)</strong></td>
+                                    <td class="p-2">Dashboard akurat, interpretasi bisnis jelas</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                            </table>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Passing:</strong> Score ≥ 70</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function copyTable() {
+            const table = document.getElementById('trainingTable');
+            const rows = Array.from(table.querySelectorAll('tr'));
+
+            // Kolom numerik: Qty (4), Harga Unit (5), Total (6)
+            const numericCols = new Set([4, 5, 6]);
+
+            const tsv = rows.map((row) => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                return cells.map((cell, idx) => {
+                    let text = cell.innerText.trim();
+
+                    if (numericCols.has(idx) && row.parentElement.tagName !== 'THEAD') {
+                        // Hilangkan pemisah ribuan agar Excel membaca sebagai Number.
+                        text = text.replace(/,/g, '');
+                    }
+
+                    return text;
+                }).join('\t');
+            }).join('\n');
+
+            const fallbackCopy = (value) => {
+                const ta = document.createElement('textarea');
+                ta.value = value;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(tsv)
+                    .catch(() => fallbackCopy(tsv))
+                    .finally(() => {
+                        alert('✓ Data berhasil disalin ke clipboard!\n\nKolom nominal disalin sebagai Number agar tetap terbaca angka di Excel.');
+                    });
+                return;
+            }
+
+            fallbackCopy(tsv);
+            alert('✓ Data berhasil disalin ke clipboard!\n\nKolom nominal disalin sebagai Number agar tetap terbaca angka di Excel.');
+        }
+    </script>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">Latihan Excel Dasar © 2026</p>
+            <p class="text-xs uppercase tracking-widest">Computer Practicum - STIE Malangkucecwara</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mid Project Case A - ID Genap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .excel-header { background-color: #217346; }
+        .code-block { background-color: #f5f5f5; border-left: 4px solid #217346; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="excel-header text-white p-6 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-briefcase text-4xl"></i>
+                <div>
+                    <h1 class="text-2xl font-bold uppercase tracking-wider">Mid Project - Case A</h1>
+                    <p class="text-sm opacity-90">Untuk Mahasiswa ID Genap | Tema: Sales & Master Product Integration</p>
+                </div>
+            </div>
+            <span class="bg-white/20 px-4 py-2 rounded-full text-xs font-semibold hidden md:inline">WEEK 1-7 EVALUATION</span>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <aside class="lg:col-span-1 space-y-6">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-gray-800 mb-4"><i class="fas fa-bullseye text-green-600 mr-2"></i>Tujuan Penilaian</h3>
+                    <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside">
+                        <li>Menguji pemahaman materi Week 1 sampai Week 7</li>
+                        <li>Integrasi data transaksi dan master produk</li>
+                        <li>Analisis KPI dan insight bisnis berbasis formula</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-gray-800 mb-4"><i class="fas fa-list-check text-green-600 mr-2"></i>Fungsi Wajib</h3>
+                    <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside">
+                        <li>SUM, AVERAGE, MIN, MAX, COUNT</li>
+                        <li>LEFT, RIGHT, MID, CONCATENATE / &</li>
+                        <li>TODAY, YEAR, MONTH, DAY, DATEDIF</li>
+                        <li>IF, AND, OR, IFERROR</li>
+                        <li>SUMIF, COUNTIF, AVERAGEIF</li>
+                        <li>VLOOKUP, HLOOKUP</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-blue-900 mb-2"><i class="fas fa-clock mr-2"></i>Alokasi Waktu</h4>
+                    <p class="text-sm text-blue-800">LEVEL 1: 40 menit</p>
+                    <p class="text-sm text-blue-800">LEVEL 2: 50 menit</p>
+                    <p class="text-sm text-blue-800">Finalisasi: 30 menit</p>
+                </div>
+            </aside>
+
+            <section class="lg:col-span-2 space-y-8">
+                <div class="bg-indigo-50 rounded-xl p-6 border border-indigo-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-indigo-900 mb-3"><i class="fas fa-book-open mr-2"></i>Cerita Besar Project (Case A)</h3>
+                    <p class="text-sm text-indigo-800 leading-relaxed mb-3">Anda berperan sebagai analis operasional toko elektronik. Manajemen meminta laporan penjualan bulan Maret 2026 yang rapi, akurat, dan bisa dipakai untuk keputusan cepat. Tugas Anda bukan hanya menghitung total, tetapi juga membersihkan data, memvalidasi kode produk, lalu menyajikan KPI penting di dashboard.</p>
+                    <p class="text-sm text-indigo-800 leading-relaxed">Hasil akhir yang diharapkan: file Excel dengan 3 sheet (<strong>DATA_INPUT</strong>, <strong>PROSES</strong>, <strong>DASHBOARD</strong>), formula berjalan benar, serta insight yang berbasis angka.</p>
+                </div>
+
+                <div class="bg-emerald-50 rounded-xl p-6 border border-emerald-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-emerald-900 mb-3"><i class="fas fa-table-columns mr-2"></i>Sheet PROSES Isinya Apa?</h3>
+                    <p class="text-sm text-emerald-800 mb-2">Di sheet <strong>PROSES</strong>, salin dulu kolom mentah dari DATA_INPUT:</p>
+                    <p class="text-sm text-emerald-800 mb-2"><strong>Invoice ID, Sales Person, Kode Produk, Region, Channel, Tanggal, Qty</strong>.</p>
+                    <p class="text-sm text-emerald-800 mb-2">Lalu tambahkan kolom hasil formula berikut:</p>
+                    <p class="text-sm text-emerald-800"><strong>Nama Produk, Harga Unit, Kategori, Total Sales, Validasi, Prefix Invoice, Nomor Invoice, Hari, Bulan, Tahun, Umur Transaksi (hari)</strong>.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">Data Transaksi (Input)</h3>
+                        <button onclick="copyProjectData()" class="text-xs bg-green-100 hover:bg-green-200 border border-green-300 px-3 py-2 rounded text-green-700 font-semibold">
+                            <i class="fas fa-copy mr-1"></i> Salin Semua Data
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table id="trxTableA" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-green-50">
+                                    <th class="border p-2 text-left">Invoice ID</th>
+                                    <th class="border p-2 text-left">Sales Person</th>
+                                    <th class="border p-2 text-left">Kode Produk</th>
+                                    <th class="border p-2 text-left">Region</th>
+                                    <th class="border p-2 text-left">Channel</th>
+                                    <th class="border p-2 text-left">Tanggal</th>
+                                    <th class="border p-2 text-left">Qty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="border p-2">INV-0326-001</td><td class="border p-2">Budi Santoso</td><td class="border p-2">PRD-001</td><td class="border p-2">Malang</td><td class="border p-2">Online</td><td class="border p-2">2026-03-01</td><td class="border p-2">2</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">INV-0326-002</td><td class="border p-2">Ani Wijaya</td><td class="border p-2">PRD-004</td><td class="border p-2">Surabaya</td><td class="border p-2">Offline</td><td class="border p-2">2026-03-03</td><td class="border p-2">4</td></tr>
+                                <tr><td class="border p-2">INV-0326-003</td><td class="border p-2">Rudi Firmansah</td><td class="border p-2">PRD-003</td><td class="border p-2">Malang</td><td class="border p-2">Online</td><td class="border p-2">2026-03-05</td><td class="border p-2">3</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">INV-0326-004</td><td class="border p-2">Budi Santoso</td><td class="border p-2">PRD-002</td><td class="border p-2">Blitar</td><td class="border p-2">Online</td><td class="border p-2">2026-03-08</td><td class="border p-2">1</td></tr>
+                                <tr><td class="border p-2">INV-0326-005</td><td class="border p-2">Ani Wijaya</td><td class="border p-2">PRD-008</td><td class="border p-2">Kediri</td><td class="border p-2">Offline</td><td class="border p-2">2026-03-10</td><td class="border p-2">6</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">INV-0326-006</td><td class="border p-2">Rudi Firmansah</td><td class="border p-2">PRD-006</td><td class="border p-2">Malang</td><td class="border p-2">Online</td><td class="border p-2">2026-03-15</td><td class="border p-2">2</td></tr>
+                                <tr><td class="border p-2">INV-0326-007</td><td class="border p-2">Budi Santoso</td><td class="border p-2">PRD-005</td><td class="border p-2">Surabaya</td><td class="border p-2">Online</td><td class="border p-2">2026-03-20</td><td class="border p-2">5</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">INV-0326-008</td><td class="border p-2">Ani Wijaya</td><td class="border p-2">PRD-999</td><td class="border p-2">Malang</td><td class="border p-2">Offline</td><td class="border p-2">2026-03-25</td><td class="border p-2">2</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Master Produk (Referensi VLOOKUP)</h3>
+                    <div class="overflow-x-auto">
+                        <table id="masterTableA" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-blue-50"><th class="border p-2">Kode</th><th class="border p-2">Nama Produk</th><th class="border p-2">Harga Unit</th><th class="border p-2">Kategori</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="border p-2">PRD-001</td><td class="border p-2">Laptop Office 14</td><td class="border p-2">8500000</td><td class="border p-2">Laptop</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">PRD-002</td><td class="border p-2">Printer Inkjet X</td><td class="border p-2">2200000</td><td class="border p-2">Printer</td></tr>
+                                <tr><td class="border p-2">PRD-003</td><td class="border p-2">Monitor 24 FHD</td><td class="border p-2">3200000</td><td class="border p-2">Monitor</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">PRD-004</td><td class="border p-2">Laptop Pro 15</td><td class="border p-2">12500000</td><td class="border p-2">Laptop</td></tr>
+                                <tr><td class="border p-2">PRD-005</td><td class="border p-2">Keyboard Mechanical</td><td class="border p-2">950000</td><td class="border p-2">Aksesoris</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">PRD-006</td><td class="border p-2">Printer Laser Pro</td><td class="border p-2">4800000</td><td class="border p-2">Printer</td></tr>
+                                <tr><td class="border p-2">PRD-007</td><td class="border p-2">Mouse Wireless</td><td class="border p-2">250000</td><td class="border p-2">Aksesoris</td></tr>
+                                <tr class="bg-gray-50"><td class="border p-2">PRD-008</td><td class="border p-2">UPS 1200VA</td><td class="border p-2">1750000</td><td class="border p-2">Power</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border-2 border-yellow-400 shadow-sm">
+                    <h3 class="text-lg font-bold mb-4">Instruksi Tugas Case A (Langkah Detail)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <p class="font-semibold">Langkah 0 - Setup Sheet</p>
+                            <p>Buat 3 sheet: <strong>DATA_INPUT</strong>, <strong>PROSES</strong>, <strong>DASHBOARD</strong>. Copy data transaksi dan master produk dari tabel pada halaman ini ke sheet DATA_INPUT.</p>
+                            <p class="mt-1">Di sheet PROSES, isi dulu kolom mentah (Invoice ID s.d. Qty), lalu baru tambah kolom hasil formula (Nama Produk s.d. Umur Transaksi).</p>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <p class="font-semibold">Langkah 1 - Lookup Nama/Harga/Kategori (baris pertama data)</p>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                Nama Produk: =IFERROR(VLOOKUP(C2,DATA_INPUT!$M$2:$P$9,2,FALSE),"Kode Tidak Valid")<br>
+                                Harga Unit: =IFERROR(VLOOKUP(C2,DATA_INPUT!$M$2:$P$9,3,FALSE),0)<br>
+                                Kategori: =IFERROR(VLOOKUP(C2,DATA_INPUT!$M$2:$P$9,4,FALSE),"Unknown")
+                            </div>
+                            <p>Setelah benar di baris pertama, copy formula ke bawah hingga baris terakhir.</p>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <p class="font-semibold">Langkah 2 - Hitung Sales, Validasi, dan Teks</p>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                Total Sales: =G2*I2<br>
+                                Validasi: =IF(H2="Kode Tidak Valid","Perlu Koreksi","OK")<br>
+                                Prefix Invoice: =LEFT(A2,3)<br>
+                                Nomor Invoice: =RIGHT(A2,3)<br>
+                                Potongan Tengah (opsional): =MID(A2,5,4)
+                            </div>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <p class="font-semibold">Langkah 3 - Analisis Tanggal</p>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                Hari: =DAY(F2)<br>
+                                Bulan: =MONTH(F2)<br>
+                                Tahun: =YEAR(F2)<br>
+                                Umur Transaksi (hari): =DATEDIF(F2,TODAY(),"D")
+                            </div>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <p class="font-semibold">Langkah 4 - Dashboard KPI Wajib</p>
+                            <p>Buat di sheet DASHBOARD: SUM, AVERAGE, MIN, MAX, COUNT, COUNTIF valid/invalid, SUMIF kategori, COUNTIF channel, AVERAGEIF region.</p>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                Target Maret: =HLOOKUP("Mar",DATA_INPUT!$T$1:$Z$3,2,FALSE)<br>
+                                Status: =IF([TotalSales]>=[TargetMaret],"ON TRACK","BELOW TARGET")
+                            </div>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <p class="font-semibold">Langkah 5 - Insight</p>
+                            <p>Tulis minimal 3 insight + 3 rekomendasi berbasis angka dashboard (bukan opini umum).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <h3 class="text-lg font-bold mb-4">Checklist Pengumpulan</h3>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-start gap-3 p-2 hover:bg-gray-50 rounded"><input type="checkbox" class="mt-1"><span>Sheet <strong>DATA_INPUT, PROSES, DASHBOARD</strong> tersedia</span></label>
+                        <label class="flex items-start gap-3 p-2 hover:bg-gray-50 rounded"><input type="checkbox" class="mt-1"><span>Semua formula utama Week 1-7 digunakan</span></label>
+                        <label class="flex items-start gap-3 p-2 hover:bg-gray-50 rounded"><input type="checkbox" class="mt-1"><span>Lookup error ditangani IFERROR (tidak ada #N/A mentah)</span></label>
+                        <label class="flex items-start gap-3 p-2 hover:bg-gray-50 rounded"><input type="checkbox" class="mt-1"><span>Dashboard KPI selesai dan terbaca jelas</span></label>
+                        <label class="flex items-start gap-3 p-2 hover:bg-gray-50 rounded"><input type="checkbox" class="mt-1"><span>3 insight + 3 rekomendasi ditulis</span></label>
+                        <label class="flex items-start gap-3 p-2 hover:bg-gray-50 rounded"><input type="checkbox" class="mt-1"><span>Nama file: <strong>NAMA_NIM_MidProject_CaseA.xlsx</strong></span></label>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function tableToTsv(tableId, numericCols) {
+            const table = document.getElementById(tableId);
+            const rows = Array.from(table.querySelectorAll('tr'));
+            return rows.map((row) => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                return cells.map((cell, idx) => {
+                    let text = cell.innerText.trim();
+                    if (numericCols.has(idx) && row.parentElement.tagName !== 'THEAD') {
+                        text = text.replace(/,/g, '');
+                    }
+                    return text;
+                }).join('\t');
+            }).join('\n');
+        }
+
+        function copyProjectData() {
+            const trx = tableToTsv('trxTableA', new Set([6]));
+            const master = tableToTsv('masterTableA', new Set([2]));
+            const payload = 'DATA TRANSAKSI\n' + trx + '\n\nMASTER PRODUK\n' + master;
+
+            const fallback = (text) => {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(payload).catch(() => fallback(payload)).finally(() => {
+                    alert('Data Case A berhasil disalin.');
+                });
+                return;
+            }
+            fallback(payload);
+            alert('Data Case A berhasil disalin.');
+        }
+    </script>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">Mid Project Excel Dasar © 2026</p>
+            <p class="text-xs uppercase tracking-widest">Computer Practicum - STIE Malangkucecwara</p>
+        </div>
+    </footer>
+</body>
+</html>

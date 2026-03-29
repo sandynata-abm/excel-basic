@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Pertemuan 5: Conditional Logic Functions (IF)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .excel-header { background-color: #217346; }
+        .code-block { background-color: #f5f5f5; border-left: 4px solid #217346; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <header class="excel-header text-white p-6 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-code-branch text-4xl"></i>
+                <div>
+                    <h1 class="text-2xl font-bold uppercase tracking-wider">Latihan Pertemuan 5</h1>
+                    <p class="text-sm opacity-90">Materi: Conditional Logic Functions (IF) Microsoft Excel</p>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <span class="bg-white/20 px-4 py-2 rounded-full text-xs font-semibold">MODUL PEMBELAJARAN</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-target mr-2 text-green-600"></i> Learning Outcomes
+                    </h3>
+                    <ul class="space-y-3 text-gray-700 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C3</span>
+                            <span><strong>Apply:</strong> Menerapkan IF, Nested IF, AND, OR, NOT dalam skenario bisnis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C4</span>
+                            <span><strong>Analyze:</strong> Menganalisis performa penjualan dan pengambilan keputusan berbasis kondisi</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-list-ol mr-2 text-green-600"></i> Materi Pembelajaran
+                    </h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> IF() - Kondisi tunggal</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Nested IF() - Kondisi berganda</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> AND() - Semua kondisi TRUE</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> OR() - Minimal satu TRUE</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> NOT() - Inversi kondisi</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> IFS() - Multi condition (opsional)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50 p-4 rounded-lg border border-amber-300">
+                    <h4 class="font-bold text-amber-900 mb-2 flex items-center">
+                        <i class="fas fa-triangle-exclamation mr-2"></i> Notifikasi Kompatibilitas
+                    </h4>
+                    <ul class="text-sm text-amber-800 space-y-1 list-disc list-inside">
+                        <li>IFS tidak tersedia di Excel 2013 dan 2016</li>
+                        <li>IFS tersedia mulai Excel 2019 / Microsoft 365</li>
+                        <li>Latihan IFS bersifat mandiri di luar kelas</li>
+                        <li>Checklist penilaian utama tidak mewajibkan IFS</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-blue-900 mb-2 flex items-center">
+                        <i class="fas fa-clock mr-2"></i> Alokasi Waktu
+                    </h4>
+                    <div class="text-sm text-blue-800 space-y-2">
+                        <p><strong>LEVEL 1:</strong> 40 menit</p>
+                        <p><strong>LEVEL 2:</strong> 50 menit</p>
+                        <p><strong>Total:</strong> 90 menit</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-8">
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 1: Fungsi Logika Dasar (IF)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.1 IF() - Kondisi Tunggal</h4>
+                            <p><strong>Definisi:</strong> Mengembalikan nilai jika kondisi TRUE, nilai lain jika FALSE.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=IF(condition, value_if_true, value_if_false)</code>
+                            </div>
+                            <p><strong>Contoh:</strong> =IF(D2 &gt;= 40000000, "Target Tercapai", "Target Tidak Tercapai")</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.2 Nested IF() - Kondisi Berganda</h4>
+                            <p><strong>Definisi:</strong> IF di dalam IF untuk menangani banyak kondisi bertingkat.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=IF(c1, v1, IF(c2, v2, IF(c3, v3, v4)))</code>
+                            </div>
+                            <p><strong>Contoh:</strong> Tier komisi berdasarkan nilai penjualan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 2: Logical Operators (AND, OR, NOT)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">2.1 AND()</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=AND(condition1, condition2, ...)</code>
+                            </div>
+                            <p>TRUE jika semua kondisi TRUE.</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">2.2 OR()</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=OR(condition1, condition2, ...)</code>
+                            </div>
+                            <p>TRUE jika minimal satu kondisi TRUE.</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">2.3 NOT()</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=NOT(condition)</code>
+                            </div>
+                            <p>Membalik nilai logika TRUE/FALSE.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-amber-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 3: IFS() - Multi-Condition Simplified (Opsional)</h3>
+                    <div class="p-3 bg-amber-50 rounded border-l-4 border-amber-500 text-sm text-gray-700">
+                        <p><strong>Catatan Kompatibilitas:</strong></p>
+                        <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li>IFS tersedia di Excel 2019 / Microsoft 365.</li>
+                            <li>Excel 2013/2016 gunakan nested IF sebagai alternatif.</li>
+                            <li>Blok ini bersifat latihan mandiri di luar kelas.</li>
+                        </ul>
+                        <div class="code-block p-2 my-2 rounded">
+                            <code>=IFS(condition1, value1, condition2, value2, ...)</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 4: Complex Conditions (IF + AND / IF + OR)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">4.1 IF + AND</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=IF(AND(c1, c2, c3), "Eligible", "Not Eligible")</code>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">4.2 IF + OR</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=IF(OR(c1, c2, c3), "URGENT", "Regular")</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">Tabel Data Praktik: CV Komputer Indonesia - Sales & Customer Performance</h3>
+                        <button onclick="copyTable()" class="text-xs bg-green-100 hover:bg-green-200 px-3 py-2 rounded border border-green-300 transition font-semibold text-green-700">
+                            <i class="fas fa-copy mr-1"></i> Salin Data
+                        </button>
+                    </div>
+
+                    <p class="text-sm text-gray-700 mb-4"><strong>Konteks:</strong> Data penjualan dipakai untuk klasifikasi tier, bonus eligibility, risk flagging, dan dashboard performa.</p>
+                    <p class="text-xs text-gray-600 mb-3"><strong>Catatan:</strong> Saat disalin, kolom numerik akan dikirim sebagai Number agar terbaca benar saat paste ke Excel.</p>
+
+                    <div class="overflow-x-auto">
+                        <table id="trainingTable" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-green-50">
+                                    <th class="border border-gray-300 p-2 text-left">No</th>
+                                    <th class="border border-gray-300 p-2 text-left">Sales ID</th>
+                                    <th class="border border-gray-300 p-2 text-left">Sales Name</th>
+                                    <th class="border border-gray-300 p-2 text-left">Monthly Sales</th>
+                                    <th class="border border-gray-300 p-2 text-left">Cust Satisfaction</th>
+                                    <th class="border border-gray-300 p-2 text-left">Attendance</th>
+                                    <th class="border border-gray-300 p-2 text-left">Payment Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">1</td>
+                                    <td class="border border-gray-300 p-2">SAL-001</td>
+                                    <td class="border border-gray-300 p-2">Budi Santoso</td>
+                                    <td class="border border-gray-300 p-2">65,000,000</td>
+                                    <td class="border border-gray-300 p-2">4.2</td>
+                                    <td class="border border-gray-300 p-2">Lengkap</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">2</td>
+                                    <td class="border border-gray-300 p-2">SAL-002</td>
+                                    <td class="border border-gray-300 p-2">Ani Wijaya</td>
+                                    <td class="border border-gray-300 p-2">95,000,000</td>
+                                    <td class="border border-gray-300 p-2">4.8</td>
+                                    <td class="border border-gray-300 p-2">Lengkap</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">3</td>
+                                    <td class="border border-gray-300 p-2">SAL-003</td>
+                                    <td class="border border-gray-300 p-2">Rudi Firmansah</td>
+                                    <td class="border border-gray-300 p-2">35,000,000</td>
+                                    <td class="border border-gray-300 p-2">3.5</td>
+                                    <td class="border border-gray-300 p-2">Tidak</td>
+                                    <td class="border border-gray-300 p-2">Hutang</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">4</td>
+                                    <td class="border border-gray-300 p-2">SAL-004</td>
+                                    <td class="border border-gray-300 p-2">Siti Nurhaliza</td>
+                                    <td class="border border-gray-300 p-2">120,000,000</td>
+                                    <td class="border border-gray-300 p-2">4.6</td>
+                                    <td class="border border-gray-300 p-2">Lengkap</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">5</td>
+                                    <td class="border border-gray-300 p-2">SAL-005</td>
+                                    <td class="border border-gray-300 p-2">Ahmad Dahlan</td>
+                                    <td class="border border-gray-300 p-2">48,000,000</td>
+                                    <td class="border border-gray-300 p-2">4.0</td>
+                                    <td class="border border-gray-300 p-2">Lengkap</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">6</td>
+                                    <td class="border border-gray-300 p-2">SAL-006</td>
+                                    <td class="border border-gray-300 p-2">Dewi Lestari</td>
+                                    <td class="border border-gray-300 p-2">180,000,000</td>
+                                    <td class="border border-gray-300 p-2">4.9</td>
+                                    <td class="border border-gray-300 p-2">Lengkap</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">7</td>
+                                    <td class="border border-gray-300 p-2">SAL-007</td>
+                                    <td class="border border-gray-300 p-2">Hendra Wijaya</td>
+                                    <td class="border border-gray-300 p-2">42,000,000</td>
+                                    <td class="border border-gray-300 p-2">3.8</td>
+                                    <td class="border border-gray-300 p-2">Tidak</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">8</td>
+                                    <td class="border border-gray-300 p-2">SAL-008</td>
+                                    <td class="border border-gray-300 p-2">Linda Putri</td>
+                                    <td class="border border-gray-300 p-2">155,000,000</td>
+                                    <td class="border border-gray-300 p-2">4.7</td>
+                                    <td class="border border-gray-300 p-2">Lengkap</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-yellow-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">LEVEL 1: Penerapan Dasar (40 menit)</h3>
+
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-amber-50 rounded border-l-4 border-amber-500">
+                            <h4 class="font-bold mb-2">Latihan 1.1 (Mandiri - Opsional): IFS Membership Tier</h4>
+                            <p><strong>Keterangan Versi:</strong> Excel 2019/Microsoft 365 dapat pakai IFS. Excel 2013/2016 gunakan nested IF.</p>
+                            <p><strong>Status:</strong> Latihan mandiri di luar kelas, tidak masuk checklist penilaian utama.</p>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                =IFS(D2 &gt;= 150000000, "Platinum", D2 &gt;= 100000000, "Gold", D2 &gt;= 50000000, "Silver", D2 &gt;= 0, "Bronze")
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.2: IF + AND Bonus Eligibility</h4>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                =IF(AND(D2 &gt;= 40000000, E2 &gt;= 4.0, F2 = "Lengkap", G2 = "Lunas"), "Eligible", "Not Eligible")
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.3: Nested IF Action Flagging</h4>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                =IF(OR(AND(D2 &lt; 40000000, F2 = "Tidak"), G2 = "Hutang", E2 &lt; 3.5), IF(AND(D2 &lt; 40000000, F2 = "Tidak"), "Priority Review", IF(G2 = "Hutang", "Payment Follow-up", "Coaching Required")), "None")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-green-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">LEVEL 2: Analisis Lanjut (50 menit)</h3>
+
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.1: Multi-Tier Commission</h4>
+                            <p>Buat Commission % dan Commission Amount dengan nested IF berbasis tier dan status eligibility.</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.2: Risk Flagging System</h4>
+                            <p>Klasifikasi RED, YELLOW, GREEN menggunakan IF + OR.</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.3: Sales Performance Dashboard</h4>
+                            <p>Buat dashboard metrik sales, quality, bonus, dan risk beserta insight.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Checklist dan Pengumpulan</h3>
+
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div>
+                            <h4 class="font-bold mb-2">Checklist Pengerjaan (90 menit):</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 1 (40 min): Latihan 1.2 dan 1.3 selesai tanpa error</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 2 (50 min): Latihan 2.1, 2.2, 2.3 selesai dan dashboard complete</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">Latihan 1.1 (IFS) dikerjakan mandiri di luar kelas (opsional, tidak dinilai)</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">File disimpan dengan nama <strong>NAMA_NIM_Week5_ConditionalLogic.xlsx</strong></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-3 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Rubric Penilaian</h4>
+                            <table class="w-full text-xs">
+                                <tr class="border-b border-green-200">
+                                    <td class="p-2"><strong>C3 (Apply)</strong></td>
+                                    <td class="p-2">Formula IF, Nested IF, AND, OR benar; logic sesuai business rule; hasil akurat</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2"><strong>C4 (Analyze)</strong></td>
+                                    <td class="p-2">Dashboard metrics akurat, insight jelas, rekomendasi tindakan tepat</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                            </table>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Passing:</strong> Score >= 70</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function copyTable() {
+            const table = document.getElementById('trainingTable');
+            const rows = Array.from(table.querySelectorAll('tr'));
+            // Numeric columns: Monthly Sales (3), Cust Satisfaction (4)
+            const numericCols = new Set([3, 4]);
+
+            const tsv = rows.map((row) => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                return cells.map((cell, idx) => {
+                    let text = cell.innerText.trim();
+                    if (numericCols.has(idx) && row.parentElement.tagName !== 'THEAD') {
+                        text = text.replace(/,/g, '');
+                    }
+                    return text;
+                }).join('\t');
+            }).join('\n');
+
+            const fallbackCopy = (value) => {
+                const ta = document.createElement('textarea');
+                ta.value = value;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(tsv)
+                    .catch(() => fallbackCopy(tsv))
+                    .finally(() => {
+                        alert('Data berhasil disalin ke clipboard. Paste di Excel dengan Ctrl+V.');
+                    });
+                return;
+            }
+
+            fallbackCopy(tsv);
+            alert('Data berhasil disalin ke clipboard. Paste di Excel dengan Ctrl+V.');
+        }
+    </script>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">Latihan Excel Dasar 2026</p>
+            <p class="text-xs uppercase tracking-widest">Computer Practicum - STIE Malangkucecwara</p>
+        </div>
+    </footer>
+
+</body>
+</html>

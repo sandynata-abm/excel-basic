@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Pertemuan 6: Criteria-Based Functions Excel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .excel-header { background-color: #217346; }
+        .code-block { background-color: #f5f5f5; border-left: 4px solid #217346; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <header class="excel-header text-white p-6 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-filter text-4xl"></i>
+                <div>
+                    <h1 class="text-2xl font-bold uppercase tracking-wider">Latihan Pertemuan 6</h1>
+                    <p class="text-sm opacity-90">Materi: SUMIF, COUNTIF, AVERAGEIF Microsoft Excel</p>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <span class="bg-white/20 px-4 py-2 rounded-full text-xs font-semibold">MODUL PEMBELAJARAN</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-target mr-2 text-green-600"></i> Learning Outcomes
+                    </h3>
+                    <ul class="space-y-3 text-gray-700 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C3</span>
+                            <span><strong>Apply:</strong> Menerapkan SUMIF, COUNTIF, AVERAGEIF dalam analisis operasional</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C4</span>
+                            <span><strong>Analyze:</strong> Menyusun insight bisnis dari segmentasi berbasis kriteria</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-list-ol mr-2 text-green-600"></i> Materi Pembelajaran
+                    </h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> SUMIF() - Jumlah berdasarkan 1 kriteria</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> COUNTIF() - Hitung data berdasarkan 1 kriteria</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> AVERAGEIF() - Rata-rata berdasarkan 1 kriteria</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> SUMIFS() - Opsional mandiri</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> COUNTIFS() - Opsional mandiri</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> AVERAGEIFS() - Opsional mandiri</li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50 p-4 rounded-lg border border-amber-300">
+                    <h4 class="font-bold text-amber-900 mb-2 flex items-center">
+                        <i class="fas fa-lightbulb mr-2"></i> Catatan Materi
+                    </h4>
+                    <ul class="text-sm text-amber-800 space-y-1 list-disc list-inside">
+                        <li>Materi utama kelas: SUMIF, COUNTIF, AVERAGEIF</li>
+                        <li>SUMIFS, COUNTIFS, AVERAGEIFS diberikan sebagai belajar mandiri (opsional)</li>
+                        <li>Latihan opsional tidak masuk checklist penilaian utama kelas</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-blue-900 mb-2 flex items-center">
+                        <i class="fas fa-clock mr-2"></i> Alokasi Waktu
+                    </h4>
+                    <div class="text-sm text-blue-800 space-y-2">
+                        <p><strong>LEVEL 1:</strong> 40 menit (fungsi dasar)</p>
+                        <p><strong>LEVEL 2:</strong> 50 menit (dashboard + insight)</p>
+                        <p><strong>Total:</strong> 90 menit</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-8">
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 1: SUMIF() - Penjumlahan Berdasarkan Kriteria</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.1 SUMIF() Dasar</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=SUMIF(range_kriteria, kriteria, [range_penjumlahan])</code>
+                            </div>
+                            <p><strong>Contoh:</strong> =SUMIF(C2:C9, "Laptop", G2:G9)</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.2 SUMIF() dengan Operator</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=SUMIF(G2:G9, ">=15000000", G2:G9)</code>
+                            </div>
+                            <p>Menjumlahkan transaksi dengan nilai minimal 15 juta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 2: COUNTIF() - Penghitungan Berdasarkan Kriteria</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">2.1 COUNTIF() Dasar</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=COUNTIF(range, kriteria)</code>
+                            </div>
+                            <p><strong>Contoh:</strong> =COUNTIF(H2:H9, "Lunas")</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">2.2 COUNTIF() Operator & Wildcard</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=COUNTIF(G2:G9, ">=20000000")</code><br>
+                                <code>=COUNTIF(D2:D9, "*Online*")</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 3: AVERAGEIF() - Rata-Rata Berdasarkan Kriteria</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">3.1 AVERAGEIF() Dasar</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=AVERAGEIF(range_kriteria, kriteria, [range_rata_rata])</code>
+                            </div>
+                            <p><strong>Contoh:</strong> =AVERAGEIF(B2:B9, "Malang", G2:G9)</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">3.2 AVERAGEIF() Kategori</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=AVERAGEIF(C2:C9, "Printer", G2:G9)</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-amber-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 5 (Opsional): SUMIFS, COUNTIFS, AVERAGEIFS</h3>
+                    <div class="p-3 bg-amber-50 rounded border-l-4 border-amber-500 text-sm text-gray-700">
+                        <p><strong>Status:</strong> Belajar mandiri di luar kelas, tidak masuk checklist utama.</p>
+                        <div class="code-block p-2 my-2 rounded text-xs">
+                            =SUMIFS(G2:G9, C2:C9, "Laptop", H2:H9, "Lunas")<br>
+                            =COUNTIFS(D2:D9, "Online", B2:B9, "Malang")<br>
+                            =AVERAGEIFS(G2:G9, C2:C9, "Monitor", H2:H9, "Lunas")
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">Tabel Data Praktik: CV Komputer Indonesia</h3>
+                        <button onclick="copyTable()" class="text-xs bg-green-100 hover:bg-green-200 px-3 py-2 rounded border border-green-300 transition font-semibold text-green-700">
+                            <i class="fas fa-copy mr-1"></i> Salin Data
+                        </button>
+                    </div>
+
+                    <p class="text-sm text-gray-700 mb-4"><strong>Konteks:</strong> Segmentasi transaksi berdasarkan region, kategori, channel, dan status pembayaran.</p>
+                    <p class="text-xs text-gray-600 mb-3"><strong>Catatan:</strong> Kolom numerik disalin sebagai Number agar terbaca benar di Excel.</p>
+
+                    <div class="overflow-x-auto">
+                        <table id="trainingTable" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-green-50">
+                                    <th class="border border-gray-300 p-2 text-left">No</th>
+                                    <th class="border border-gray-300 p-2 text-left">Region</th>
+                                    <th class="border border-gray-300 p-2 text-left">Kategori</th>
+                                    <th class="border border-gray-300 p-2 text-left">Channel</th>
+                                    <th class="border border-gray-300 p-2 text-left">Qty</th>
+                                    <th class="border border-gray-300 p-2 text-left">Harga Unit</th>
+                                    <th class="border border-gray-300 p-2 text-left">Total Sales</th>
+                                    <th class="border border-gray-300 p-2 text-left">Payment Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">1</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Laptop</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">3</td>
+                                    <td class="border border-gray-300 p-2">8,500,000</td>
+                                    <td class="border border-gray-300 p-2">25,500,000</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">2</td>
+                                    <td class="border border-gray-300 p-2">Surabaya</td>
+                                    <td class="border border-gray-300 p-2">Printer</td>
+                                    <td class="border border-gray-300 p-2">Offline</td>
+                                    <td class="border border-gray-300 p-2">5</td>
+                                    <td class="border border-gray-300 p-2">2,200,000</td>
+                                    <td class="border border-gray-300 p-2">11,000,000</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">3</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Monitor</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">4</td>
+                                    <td class="border border-gray-300 p-2">3,200,000</td>
+                                    <td class="border border-gray-300 p-2">12,800,000</td>
+                                    <td class="border border-gray-300 p-2">Hutang</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">4</td>
+                                    <td class="border border-gray-300 p-2">Blitar</td>
+                                    <td class="border border-gray-300 p-2">Laptop</td>
+                                    <td class="border border-gray-300 p-2">Offline</td>
+                                    <td class="border border-gray-300 p-2">2</td>
+                                    <td class="border border-gray-300 p-2">9,200,000</td>
+                                    <td class="border border-gray-300 p-2">18,400,000</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">5</td>
+                                    <td class="border border-gray-300 p-2">Kediri</td>
+                                    <td class="border border-gray-300 p-2">Aksesoris</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">20</td>
+                                    <td class="border border-gray-300 p-2">350,000</td>
+                                    <td class="border border-gray-300 p-2">7,000,000</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">6</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Printer</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">6</td>
+                                    <td class="border border-gray-300 p-2">2,100,000</td>
+                                    <td class="border border-gray-300 p-2">12,600,000</td>
+                                    <td class="border border-gray-300 p-2">Hutang</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">7</td>
+                                    <td class="border border-gray-300 p-2">Surabaya</td>
+                                    <td class="border border-gray-300 p-2">Laptop</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">7</td>
+                                    <td class="border border-gray-300 p-2">8,700,000</td>
+                                    <td class="border border-gray-300 p-2">60,900,000</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">8</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Monitor</td>
+                                    <td class="border border-gray-300 p-2">Offline</td>
+                                    <td class="border border-gray-300 p-2">3</td>
+                                    <td class="border border-gray-300 p-2">3,400,000</td>
+                                    <td class="border border-gray-300 p-2">10,200,000</td>
+                                    <td class="border border-gray-300 p-2">Lunas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-yellow-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">LEVEL 1: Penerapan Dasar (40 menit)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.1: SUMIF per Kategori</h4>
+                            <p>Buat total sales Laptop, Printer, Monitor, serta transaksi >= 15 juta.</p>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.2: COUNTIF Distribusi</h4>
+                            <p>Hitung Lunas/Hutang, transaksi Online, dan transaksi >= 20 juta.</p>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.3: AVERAGEIF Segmentasi</h4>
+                            <p>Hitung rata-rata berdasarkan Region, Kategori, dan Payment Status.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-green-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">LEVEL 2: Analisis Lanjut (50 menit)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.1: Priority Flag dengan IF</h4>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                =IF(OR(G2&gt;=20000000, H2="Hutang"), "High", IF(G2&gt;=12000000, "Medium", "Low"))
+                            </div>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.2: KPI Summary Panel</h4>
+                            <p>Bangun KPI Sales, Count, dan Average menggunakan fungsi criteria-based.</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.3: Insight & Rekomendasi</h4>
+                            <p>Tulis minimal 3 insight dan 3 rekomendasi berbasis data KPI.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Checklist dan Pengumpulan</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div>
+                            <h4 class="font-bold mb-2">Checklist Pengerjaan (90 menit):</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 1 (40 min): Latihan 1.1, 1.2, 1.3 selesai tanpa error</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 2 (50 min): Latihan 2.1, 2.2, 2.3 selesai + insight</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">Latihan SUMIFS/COUNTIFS/AVERAGEIFS dikerjakan mandiri (opsional, tidak dinilai)</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">File disimpan dengan nama <strong>NAMA_NIM_Week6_CriteriaFunctions.xlsx</strong></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-3 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Rubric Penilaian</h4>
+                            <table class="w-full text-xs">
+                                <tr class="border-b border-green-200">
+                                    <td class="p-2"><strong>C3 (Apply)</strong></td>
+                                    <td class="p-2">Formula SUMIF, COUNTIF, AVERAGEIF, IF benar dan hasil perhitungan akurat</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2"><strong>C4 (Analyze)</strong></td>
+                                    <td class="p-2">KPI dashboard, insight, dan rekomendasi operasional relevan</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                            </table>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Passing:</strong> Score >= 70</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function copyTable() {
+            const table = document.getElementById('trainingTable');
+            const rows = Array.from(table.querySelectorAll('tr'));
+            // Numeric columns: Qty (4), Harga Unit (5), Total Sales (6)
+            const numericCols = new Set([4, 5, 6]);
+
+            const tsv = rows.map((row) => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                return cells.map((cell, idx) => {
+                    let text = cell.innerText.trim();
+                    if (numericCols.has(idx) && row.parentElement.tagName !== 'THEAD') {
+                        text = text.replace(/,/g, '');
+                    }
+                    return text;
+                }).join('\t');
+            }).join('\n');
+
+            const fallbackCopy = (value) => {
+                const ta = document.createElement('textarea');
+                ta.value = value;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(tsv)
+                    .catch(() => fallbackCopy(tsv))
+                    .finally(() => {
+                        alert('Data berhasil disalin ke clipboard. Paste di Excel dengan Ctrl+V.');
+                    });
+                return;
+            }
+
+            fallbackCopy(tsv);
+            alert('Data berhasil disalin ke clipboard. Paste di Excel dengan Ctrl+V.');
+        }
+    </script>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">Latihan Excel Dasar 2026</p>
+            <p class="text-xs uppercase tracking-widest">Computer Practicum - STIE Malangkucecwara</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Pertemuan 7: Lookup Functions Excel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .excel-header { background-color: #217346; }
+        .code-block { background-color: #f5f5f5; border-left: 4px solid #217346; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <header class="excel-header text-white p-6 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-magnifying-glass-chart text-4xl"></i>
+                <div>
+                    <h1 class="text-2xl font-bold uppercase tracking-wider">Latihan Pertemuan 7</h1>
+                    <p class="text-sm opacity-90">Materi: VLOOKUP dan HLOOKUP Microsoft Excel</p>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <span class="bg-white/20 px-4 py-2 rounded-full text-xs font-semibold">MODUL PEMBELAJARAN</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-target mr-2 text-green-600"></i> Learning Outcomes
+                    </h3>
+                    <ul class="space-y-3 text-gray-700 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C3</span>
+                            <span><strong>Apply:</strong> Menerapkan VLOOKUP, HLOOKUP, IFERROR dalam integrasi data transaksi-master</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C4</span>
+                            <span><strong>Analyze:</strong> Menganalisis kualitas data lookup dan insight sales per kategori</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-list-ol mr-2 text-green-600"></i> Materi Pembelajaran
+                    </h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> VLOOKUP() - Pencarian vertikal</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> HLOOKUP() - Pencarian horizontal</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> IFERROR() - Validasi hasil lookup</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> INDEX + MATCH (opsional mandiri)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <h4 class="font-bold text-green-900 mb-2 flex items-center">
+                        <i class="fas fa-lightbulb mr-2"></i> Tips Lookup
+                    </h4>
+                    <ul class="text-sm text-green-800 space-y-1 list-disc list-inside">
+                        <li>Gunakan <strong>FALSE</strong> untuk exact match kode produk</li>
+                        <li>Pakai <strong>$</strong> (absolute reference) agar range master tidak bergeser</li>
+                        <li>Gunakan <strong>IFERROR</strong> agar output lebih bersih</li>
+                        <li>Approximate match (TRUE) hanya untuk tabel tier yang tersortir</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-blue-900 mb-2 flex items-center">
+                        <i class="fas fa-clock mr-2"></i> Alokasi Waktu
+                    </h4>
+                    <div class="text-sm text-blue-800 space-y-2">
+                        <p><strong>LEVEL 1:</strong> 40 menit</p>
+                        <p><strong>LEVEL 2:</strong> 50 menit</p>
+                        <p><strong>Total:</strong> 90 menit</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-8">
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 1: VLOOKUP() - Vertical Lookup</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.1 VLOOKUP Dasar (Exact Match)</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=VLOOKUP(lookup_value, table_array, col_index_num, FALSE)</code>
+                            </div>
+                            <p><strong>Contoh:</strong> =VLOOKUP(B2, $M$2:$P$9, 2, FALSE)</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.2 VLOOKUP Multi-Kolom</h4>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                Nama Produk: =VLOOKUP(B2, $M$2:$P$9, 2, FALSE)<br>
+                                Harga Unit: =VLOOKUP(B2, $M$2:$P$9, 3, FALSE)<br>
+                                Kategori: =VLOOKUP(B2, $M$2:$P$9, 4, FALSE)
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.3 VLOOKUP Approximate Match</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=VLOOKUP(G2, $T$2:$U$6, 2, TRUE)</code>
+                            </div>
+                            <p>Dipakai untuk tier/range, bukan kode transaksi harian.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 2: HLOOKUP() - Horizontal Lookup</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">2.1 HLOOKUP Dasar</h4>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=HLOOKUP(lookup_value, table_array, row_index_num, FALSE)</code>
+                            </div>
+                            <p><strong>Contoh:</strong> =HLOOKUP("Mar", $B$20:$M$22, 2, FALSE)</p>
+                        </div>
+
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">2.2 Multi-Baris Parameter</h4>
+                            <div class="code-block p-2 my-2 rounded text-xs">
+                                Target Sales: =HLOOKUP("Apr", $B$20:$M$22, 2, FALSE)<br>
+                                Target Margin: =HLOOKUP("Apr", $B$20:$M$22, 3, FALSE)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 3: Integrasi Lookup + IFERROR</h3>
+                    <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500 text-sm text-gray-700">
+                        <p><strong>Tujuan:</strong> Menangani kode tidak ditemukan agar output ramah pengguna.</p>
+                        <div class="code-block p-2 my-2 rounded text-xs">
+                            Nama Produk: =IFERROR(VLOOKUP(B2, $M$2:$P$9, 2, FALSE), "Kode Tidak Valid")<br>
+                            Harga Unit: =IFERROR(VLOOKUP(B2, $M$2:$P$9, 3, FALSE), 0)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-amber-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 5 (Opsional): INDEX + MATCH - Belajar Mandiri</h3>
+                    <div class="p-3 bg-amber-50 rounded border-l-4 border-amber-500 text-sm text-gray-700">
+                        <p><strong>Status:</strong> Latihan mandiri di luar kelas, tidak masuk checklist penilaian utama.</p>
+                        <div class="code-block p-2 my-2 rounded text-xs">
+                            =INDEX($N$2:$N$9, MATCH(B2, $M$2:$M$9, 0))<br>
+                            =IFERROR(INDEX($O$2:$O$9, MATCH(B2, $M$2:$M$9, 0)), 0)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">Tabel Data Praktik: Transaction + Master Product</h3>
+                        <button onclick="copyTable()" class="text-xs bg-green-100 hover:bg-green-200 px-3 py-2 rounded border border-green-300 transition font-semibold text-green-700">
+                            <i class="fas fa-copy mr-1"></i> Salin Data
+                        </button>
+                    </div>
+
+                    <p class="text-sm text-gray-700 mb-4"><strong>Konteks:</strong> Data transaksi dilengkapi otomatis dari master produk menggunakan lookup.</p>
+                    <p class="text-xs text-gray-600 mb-3"><strong>Catatan:</strong> Nilai numerik disalin sebagai Number agar tetap terbaca angka di Excel.</p>
+
+                    <div class="overflow-x-auto mb-4">
+                        <p class="text-xs font-semibold text-gray-600 mb-2">DATA TRANSAKSI (A:E)</p>
+                        <table id="trainingTable" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-green-50">
+                                    <th class="border border-gray-300 p-2 text-left">No Transaksi</th>
+                                    <th class="border border-gray-300 p-2 text-left">Kode Produk</th>
+                                    <th class="border border-gray-300 p-2 text-left">Region</th>
+                                    <th class="border border-gray-300 p-2 text-left">Channel</th>
+                                    <th class="border border-gray-300 p-2 text-left">Qty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">TRX-0701</td>
+                                    <td class="border border-gray-300 p-2">PRD-001</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">2</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">TRX-0702</td>
+                                    <td class="border border-gray-300 p-2">PRD-004</td>
+                                    <td class="border border-gray-300 p-2">Surabaya</td>
+                                    <td class="border border-gray-300 p-2">Offline</td>
+                                    <td class="border border-gray-300 p-2">4</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">TRX-0703</td>
+                                    <td class="border border-gray-300 p-2">PRD-003</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">3</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">TRX-0704</td>
+                                    <td class="border border-gray-300 p-2">PRD-002</td>
+                                    <td class="border border-gray-300 p-2">Blitar</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">1</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">TRX-0705</td>
+                                    <td class="border border-gray-300 p-2">PRD-008</td>
+                                    <td class="border border-gray-300 p-2">Kediri</td>
+                                    <td class="border border-gray-300 p-2">Offline</td>
+                                    <td class="border border-gray-300 p-2">6</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">TRX-0706</td>
+                                    <td class="border border-gray-300 p-2">PRD-006</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">TRX-0707</td>
+                                    <td class="border border-gray-300 p-2">PRD-005</td>
+                                    <td class="border border-gray-300 p-2">Surabaya</td>
+                                    <td class="border border-gray-300 p-2">Online</td>
+                                    <td class="border border-gray-300 p-2">5</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">TRX-0708</td>
+                                    <td class="border border-gray-300 p-2">PRD-999</td>
+                                    <td class="border border-gray-300 p-2">Malang</td>
+                                    <td class="border border-gray-300 p-2">Offline</td>
+                                    <td class="border border-gray-300 p-2">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <p class="text-xs font-semibold text-gray-600 mb-2">MASTER DATA PRODUK (M:P)</p>
+                        <table id="masterTable" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-blue-50">
+                                    <th class="border border-gray-300 p-2 text-left">Kode Produk</th>
+                                    <th class="border border-gray-300 p-2 text-left">Nama Produk</th>
+                                    <th class="border border-gray-300 p-2 text-left">Harga Unit</th>
+                                    <th class="border border-gray-300 p-2 text-left">Kategori</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">PRD-001</td>
+                                    <td class="border border-gray-300 p-2">Laptop Office 14</td>
+                                    <td class="border border-gray-300 p-2">8,500,000</td>
+                                    <td class="border border-gray-300 p-2">Laptop</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">PRD-002</td>
+                                    <td class="border border-gray-300 p-2">Printer Inkjet X</td>
+                                    <td class="border border-gray-300 p-2">2,200,000</td>
+                                    <td class="border border-gray-300 p-2">Printer</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">PRD-003</td>
+                                    <td class="border border-gray-300 p-2">Monitor 24 FHD</td>
+                                    <td class="border border-gray-300 p-2">3,200,000</td>
+                                    <td class="border border-gray-300 p-2">Monitor</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">PRD-004</td>
+                                    <td class="border border-gray-300 p-2">Laptop Pro 15</td>
+                                    <td class="border border-gray-300 p-2">12,500,000</td>
+                                    <td class="border border-gray-300 p-2">Laptop</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">PRD-005</td>
+                                    <td class="border border-gray-300 p-2">Keyboard Mechanical</td>
+                                    <td class="border border-gray-300 p-2">950,000</td>
+                                    <td class="border border-gray-300 p-2">Aksesoris</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">PRD-006</td>
+                                    <td class="border border-gray-300 p-2">Printer Laser Pro</td>
+                                    <td class="border border-gray-300 p-2">4,800,000</td>
+                                    <td class="border border-gray-300 p-2">Printer</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">PRD-007</td>
+                                    <td class="border border-gray-300 p-2">Mouse Wireless</td>
+                                    <td class="border border-gray-300 p-2">250,000</td>
+                                    <td class="border border-gray-300 p-2">Aksesoris</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">PRD-008</td>
+                                    <td class="border border-gray-300 p-2">UPS 1200VA</td>
+                                    <td class="border border-gray-300 p-2">1,750,000</td>
+                                    <td class="border border-gray-300 p-2">Power</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-yellow-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">LEVEL 1: Penerapan Dasar Lookup (40 menit)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.1: Lengkapi Data Transaksi dengan VLOOKUP</h4>
+                            <p>Isi kolom nama produk, harga unit, dan kategori dari master data menggunakan VLOOKUP + IFERROR.</p>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.2: Total Sales dan Validasi</h4>
+                            <p>Hitung total sales dan tandai status validasi data (OK / Perlu Koreksi).</p>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.3: HLOOKUP Target Bulanan</h4>
+                            <p>Gunakan HLOOKUP untuk mengambil target sales dan target margin per bulan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-green-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">LEVEL 2: Analisis Lanjut & Dashboard (50 menit)</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.1: Dashboard Kualitas Data Lookup</h4>
+                            <p>Hitung total transaksi, valid, invalid, persentase valid, dan status KPI data quality.</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.2: Dashboard Sales per Kategori</h4>
+                            <p>Ringkas total sales per kategori dengan SUMIF berdasarkan hasil lookup kategori.</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Latihan 2.3: Insight dan Rekomendasi Operasional</h4>
+                            <p>Tulis minimal 3 insight dan 3 rekomendasi berbasis angka dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Checklist dan Pengumpulan</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div>
+                            <h4 class="font-bold mb-2">Checklist Pengerjaan (90 menit):</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 1 (40 min): Latihan 1.1, 1.2, 1.3 selesai tanpa error</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 2 (50 min): Latihan 2.1, 2.2, 2.3 selesai + insight</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">Latihan INDEX-MATCH dikerjakan mandiri (opsional, tidak dinilai)</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">File disimpan dengan nama <strong>NAMA_NIM_Week7_LookupFunctions.xlsx</strong></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-3 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Rubric Penilaian</h4>
+                            <table class="w-full text-xs">
+                                <tr class="border-b border-green-200">
+                                    <td class="p-2"><strong>C3 (Apply)</strong></td>
+                                    <td class="p-2">Formula VLOOKUP, HLOOKUP, IFERROR, IF benar; hasil lookup akurat</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2"><strong>C4 (Analyze)</strong></td>
+                                    <td class="p-2">Dashboard validasi data dan insight operasional berbasis angka</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                            </table>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Passing:</strong> Score &gt;= 70</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function tableToTsv(tableId, numericCols) {
+            const table = document.getElementById(tableId);
+            const rows = Array.from(table.querySelectorAll('tr'));
+            return rows.map((row) => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                return cells.map((cell, idx) => {
+                    let text = cell.innerText.trim();
+                    if (numericCols.has(idx) && row.parentElement.tagName !== 'THEAD') {
+                        text = text.replace(/,/g, '');
+                    }
+                    return text;
+                }).join('\t');
+            }).join('\n');
+        }
+
+        function copyTable() {
+            const trxTsv = tableToTsv('trainingTable', new Set([4]));
+            const masterTsv = tableToTsv('masterTable', new Set([2]));
+            const tsv = 'DATA TRANSAKSI\n' + trxTsv + '\n\nMASTER DATA PRODUK\n' + masterTsv;
+
+            const fallbackCopy = (value) => {
+                const ta = document.createElement('textarea');
+                ta.value = value;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(tsv)
+                    .catch(() => fallbackCopy(tsv))
+                    .finally(() => {
+                        alert('Data transaksi dan master produk berhasil disalin ke clipboard.');
+                    });
+                return;
+            }
+
+            fallbackCopy(tsv);
+            alert('Data transaksi dan master produk berhasil disalin ke clipboard.');
+        }
+    </script>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">Latihan Excel Dasar 2026</p>
+            <p class="text-xs uppercase tracking-widest">Computer Practicum - STIE Malangkucecwara</p>
+        </div>
+    </footer>
+
+</body>
+</html>

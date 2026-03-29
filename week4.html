@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Pertemuan 4: Date-Time Functions Excel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .excel-header { background-color: #217346; }
+        .time-badge { background-color: #e8f5e9; color: #1b5e20; }
+        .code-block { background-color: #f5f5f5; border-left: 4px solid #217346; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="excel-header text-white p-6 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-calendar-alt text-4xl"></i>
+                <div>
+                    <h1 class="text-2xl font-bold uppercase tracking-wider">Latihan Pertemuan 4</h1>
+                    <p class="text-sm opacity-90">Materi: Date-Time Functions Microsoft Excel</p>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <span class="bg-white/20 px-4 py-2 rounded-full text-xs font-semibold">MODUL PEMBELAJARAN</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Sidebar Navigation -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <!-- Learning Outcomes -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-target mr-2 text-green-600"></i> Learning Outcomes
+                    </h3>
+                    <ul class="space-y-3 text-gray-700 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C3</span>
+                            <span><strong>Apply:</strong> Menerapkan date-time functions dalam konteks bisnis nyata</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2 font-bold">C4</span>
+                            <span><strong>Analyze:</strong> Menganalisis data temporal dan membuat timeline reporting</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Daftar Materi -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-list-ol mr-2 text-green-600"></i> Materi Pembelajaran
+                    </h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> TODAY() - Tanggal Hari Ini</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> NOW() - Tanggal + Waktu</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> YEAR() - Extract Tahun</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> MONTH() - Extract Bulan</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> DAY() - Extract Hari</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> DATEDIF() - Hitung Selisih</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> NETWORKDAYS() - Hari Kerja</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> WORKDAY() - Deadline Planning</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> EDATE() - Manipulasi Tanggal</li>
+                    </ul>
+                </div>
+
+                <!-- Tips Box -->
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <h4 class="font-bold text-green-900 mb-2 flex items-center">
+                        <i class="fas fa-lightbulb mr-2"></i> Tips Efisiensi
+                    </h4>
+                    <ul class="text-sm text-green-800 space-y-1 list-disc list-inside">
+                        <li>TODAY() update setiap hari otomatis</li>
+                        <li>DATEDIF unit: "Y"=tahun, "M"=bulan, "D"=hari</li>
+                        <li>Exclude weekend: gunakan NETWORKDAYS</li>
+                        <li>Format tanggal sebagai Date, bukan Text</li>
+                    </ul>
+                </div>
+
+                <!-- Duration -->
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-blue-900 mb-2 flex items-center">
+                        <i class="fas fa-clock mr-2"></i> Alokasi Waktu
+                    </h4>
+                    <div class="text-sm text-blue-800 space-y-2">
+                        <p><strong>LEVEL 1:</strong> 40 menit (Dasar)</p>
+                        <p><strong>LEVEL 2:</strong> 50 menit (Lanjutan)</p>
+                        <p><strong>Finalisasi:</strong> 10 menit (Buffer)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+
+                <!-- BLOK 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 1: Fungsi Tanggal Dasar (TODAY, NOW, YEAR, MONTH, DAY)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.1 TODAY()</h4>
+                            <p><strong>Definisi:</strong> Mengembalikan tanggal hari ini (sistem komputer) tanpa komponen waktu.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=TODAY()</code>
+                            </div>
+                            <p><strong>Kegunaan:</strong> Mencatat tanggal transaksi otomatis, menghitung umur dokumen, aging report piutang.</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.2 NOW()</h4>
+                            <p><strong>Definisi:</strong> Mengembalikan tanggal dan waktu saat ini (sistem komputer).</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=NOW()</code>
+                            </div>
+                            <p><strong>Kegunaan:</strong> Mencatat timestamp lengkap, tracking waktu entry/exit, audit log aktivitas.</p>
+                        </div>
+
+                        <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">1.3 YEAR(), MONTH(), DAY()</h4>
+                            <p><strong>Definisi:</strong> Mengekstrak tahun, bulan, atau hari dari sebuah tanggal.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=YEAR(date)  |  =MONTH(date)  |  =DAY(date)</code>
+                            </div>
+                            <p><strong>Kegunaan YEAR:</strong> Year grouping, YTD analysis, menghitung usia karyawan.</p>
+                            <p><strong>Kegunaan MONTH:</strong> Monthly report, seasonal analysis, budget allocation per bulan.</p>
+                            <p><strong>Kegunaan DAY:</strong> Daily report, cut-off date validation, payroll scheduling.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOK 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 2: Fungsi Penghitung Hari (DATEDIF)</h3>
+                    
+                    <div class="p-3 bg-gray-50 rounded border-l-4 border-green-500">
+                        <h4 class="font-bold mb-2">2.1 DATEDIF()</h4>
+                        <p><strong>Definisi:</strong> Menghitung selisih antara dua tanggal dengan berbagai unit (hari, bulan, tahun).</p>
+                        <div class="code-block p-2 my-2 rounded">
+                            <code>=DATEDIF(start_date, end_date, unit)</code>
+                        </div>
+                        <p><strong>Unit:</strong> "D"=hari, "M"=bulan, "Y"=tahun, "YM"=bulan tanpa tahun, "MD"=hari tanpa bulan</p>
+                        <p><strong>Kegunaan:</strong> Menghitung tenure karyawan, aging piutang, project duration, leave calculation.</p>
+                        <p class="text-xs text-gray-600 mt-2"><strong>Contoh:</strong> Tenure 5 tahun 9 bulan = DATEDIF(hire_date, TODAY(), "Y") & " tahun " & DATEDIF(hire_date, TODAY(), "YM") & " bulan"</p>
+                    </div>
+                </div>
+
+                <!-- BLOK 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 3: Fungsi Hari Kerja (NETWORKDAYS, WORKDAY)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">3.1 NETWORKDAYS()</h4>
+                            <p><strong>Definisi:</strong> Menghitung jumlah hari kerja (Senin-Jumat) antara dua tanggal, excluding weekends dan hari libur.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=NETWORKDAYS(start_date, end_date, [holidays])</code>
+                            </div>
+                            <p><strong>Kegunaan:</strong> Project timeline, lead time calculation, employee leave balance, resource planning.</p>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Contoh:</strong> Project 1 Mar - 31 Mar = 22 hari kerja (exclude Sat/Sun)</p>
+                        </div>
+
+                        <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                            <h4 class="font-bold mb-2">3.2 WORKDAY()</h4>
+                            <p><strong>Definisi:</strong> Menghitung tanggal yang merupakan N hari kerja sebelum atau sesudah start date.</p>
+                            <div class="code-block p-2 my-2 rounded">
+                                <code>=WORKDAY(start_date, days, [holidays])</code>
+                            </div>
+                            <p><strong>Kegunaan:</strong> Menentukan deadline, delivery date planning, SLA calculation, milestone scheduling.</p>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Contoh:</strong> Order tgl 1 Mar, SLA 5 hari kerja = WORKDAY(1 Mar, 5) → 6 Mar (Jumat)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOK 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Blok 4: Fungsi Manipulasi Tanggal (EDATE)</h3>
+                    
+                    <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <h4 class="font-bold mb-2">4.1 EDATE()</h4>
+                        <p><strong>Definisi:</strong> Menambahkan atau mengurangi bulan dari sebuah tanggal.</p>
+                        <div class="code-block p-2 my-2 rounded">
+                            <code>=EDATE(start_date, months)</code>
+                        </div>
+                        <p><strong>Kegunaan:</strong> Warranty expiration date, contract renewal planning, subscription billing, loan due date.</p>
+                        <p class="text-xs text-gray-600 mt-2"><strong>Contoh:</strong> Pembelian 15 Mar, garansi 24 bulan = EDATE(15 Mar, 24) → 15 Mar 2028</p>
+                    </div>
+                </div>
+
+                <!-- Data Praktik -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">📊 Tabel Data Praktik: CV Komputer Indonesia - HR Department</h3>
+                        <button onclick="copyTable()" class="text-xs bg-green-100 hover:bg-green-200 px-3 py-2 rounded border border-green-300 transition font-semibold text-green-700">
+                            <i class="fas fa-copy mr-1"></i> Salin Data
+                        </button>
+                    </div>
+                    
+                    <p class="text-sm text-gray-700 mb-4"><strong>Konteks:</strong> CV Komputer Indonesia mengelola data karyawan untuk HR analytics, performance evaluation, dan project timeline planning. Data hire date dan project schedule digunakan untuk tenure analysis dan resource planning.</p>
+                    <p class="text-xs text-gray-600 mb-3"><strong>Catatan:</strong> Saat disalin, kolom nominal (Tenure, Working Days) akan dikirim sebagai Number agar tetap terbaca angka saat di-paste ke Excel.</p>
+
+                    <div class="overflow-x-auto">
+                        <table id="trainingTable" class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-green-50">
+                                    <th class="border border-gray-300 p-2 text-left">No</th>
+                                    <th class="border border-gray-300 p-2 text-left">ID</th>
+                                    <th class="border border-gray-300 p-2 text-left">Nama Karyawan</th>
+                                    <th class="border border-gray-300 p-2 text-left">Hire Date</th>
+                                    <th class="border border-gray-300 p-2 text-left">Posisi</th>
+                                    <th class="border border-gray-300 p-2 text-left">Project Start</th>
+                                    <th class="border border-gray-300 p-2 text-left">Project End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">1</td>
+                                    <td class="border border-gray-300 p-2">EMP-001</td>
+                                    <td class="border border-gray-300 p-2">Budi Santoso</td>
+                                    <td class="border border-gray-300 p-2">2020-05-15</td>
+                                    <td class="border border-gray-300 p-2">Sales Manager</td>
+                                    <td class="border border-gray-300 p-2">2026-03-01</td>
+                                    <td class="border border-gray-300 p-2">2026-03-31</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">2</td>
+                                    <td class="border border-gray-300 p-2">EMP-002</td>
+                                    <td class="border border-gray-300 p-2">Ani Wijaya</td>
+                                    <td class="border border-gray-300 p-2">2019-08-20</td>
+                                    <td class="border border-gray-300 p-2">Finance Manager</td>
+                                    <td class="border border-gray-300 p-2">2026-03-01</td>
+                                    <td class="border border-gray-300 p-2">2026-03-22</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">3</td>
+                                    <td class="border border-gray-300 p-2">EMP-003</td>
+                                    <td class="border border-gray-300 p-2">Rudi Firmansah</td>
+                                    <td class="border border-gray-300 p-2">2022-01-10</td>
+                                    <td class="border border-gray-300 p-2">Tech Support</td>
+                                    <td class="border border-gray-300 p-2">2026-03-05</td>
+                                    <td class="border border-gray-300 p-2">2026-03-31</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">4</td>
+                                    <td class="border border-gray-300 p-2">EMP-004</td>
+                                    <td class="border border-gray-300 p-2">Siti Nurhaliza</td>
+                                    <td class="border border-gray-300 p-2">2021-03-01</td>
+                                    <td class="border border-gray-300 p-2">HR Coordinator</td>
+                                    <td class="border border-gray-300 p-2">2026-03-01</td>
+                                    <td class="border border-gray-300 p-2">2026-03-15</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">5</td>
+                                    <td class="border border-gray-300 p-2">EMP-005</td>
+                                    <td class="border border-gray-300 p-2">Ahmad Dahlan</td>
+                                    <td class="border border-gray-300 p-2">2023-06-12</td>
+                                    <td class="border border-gray-300 p-2">Junior Developer</td>
+                                    <td class="border border-gray-300 p-2">2026-03-08</td>
+                                    <td class="border border-gray-300 p-2">2026-03-31</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">6</td>
+                                    <td class="border border-gray-300 p-2">EMP-006</td>
+                                    <td class="border border-gray-300 p-2">Dewi Lestari</td>
+                                    <td class="border border-gray-300 p-2">2018-11-05</td>
+                                    <td class="border border-gray-300 p-2">Director</td>
+                                    <td class="border border-gray-300 p-2">2026-03-01</td>
+                                    <td class="border border-gray-300 p-2">2026-03-31</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">7</td>
+                                    <td class="border border-gray-300 p-2">EMP-007</td>
+                                    <td class="border border-gray-300 p-2">Hendra Wijaya</td>
+                                    <td class="border border-gray-300 p-2">2021-07-22</td>
+                                    <td class="border border-gray-300 p-2">Data Analyst</td>
+                                    <td class="border border-gray-300 p-2">2026-03-15</td>
+                                    <td class="border border-gray-300 p-2">2026-03-31</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 p-2">8</td>
+                                    <td class="border border-gray-300 p-2">EMP-008</td>
+                                    <td class="border border-gray-300 p-2">Linda Putri</td>
+                                    <td class="border border-gray-300 p-2">2022-02-14</td>
+                                    <td class="border border-gray-300 p-2">Customer Service</td>
+                                    <td class="border border-gray-300 p-2">2026-03-01</td>
+                                    <td class="border border-gray-300 p-2">2026-03-25</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- LEVEL 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-yellow-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">🎯 LEVEL 1: Penerapan Dasar (40 menit)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.1: Hitung Tenure Karyawan dengan YEAR dan DATEDIF (12 menit)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Copy sample data (8 karyawan) ke Excel</li>
+                                <li>Buat kolom "Tenure (Tahun)" dengan 2 formula options:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        Metode 1: =YEAR(TODAY()) - YEAR(D2)<br>
+                                        Metode 2: =DATEDIF(D2, TODAY(), "Y")
+                                    </div>
+                                </li>
+                                <li><strong>Analisis:</strong> Karyawan dengan tenure paling lama? Karyawan baru? Rata-rata tenure?</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.2: Extract Komponen Tanggal (MONTH, YEAR, DAY) (8 menit)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Gunakan hire date dari Latihan 1.1</li>
+                                <li>Buat 3 kolom baru untuk extract:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        Hire Year: =YEAR(D2)<br>
+                                        Hire Month: =MONTH(D2)<br>
+                                        Hire Day: =DAY(D2)
+                                    </div>
+                                </li>
+                                <li><strong>Analisis:</strong> Karyawan dengan anniversary month sama dengan hari ini? Bulan terbanyak hire?</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                            <h4 class="font-bold mb-2">Latihan 1.3: Hitung Age of Data dengan TODAY (5 menit)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Buat kolom "Days Since Hire":
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =TODAY() - D2
+                                    </div>
+                                </li>
+                                <li>Atau dalam bulan:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =DATEDIF(D2, TODAY(), "M")
+                                    </div>
+                                </li>
+                                <li><strong>Interpretasi:</strong> Karyawan paling recently hired? Estimasi tenure paling lama?</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LEVEL 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-green-400 border-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">🎯 LEVEL 2: Project Timeline & HR Analytics (50 menit)</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">TAHAP A: Hitung Working Days dengan NETWORKDAYS (10 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Gunakan Project Start dan Project End dari data</li>
+                                <li>Buat kolom "Working Days" dengan formula:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =NETWORKDAYS(G2, H2)
+                                    </div>
+                                </li>
+                                <li>Hasil: Jumlah hari kerja (exclude Sabtu/Minggu)</li>
+                                <li><strong>Analisis:</strong> Project mana paling lama? Paling singkat?</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">TAHAP B: Tentukan Deadline dengan WORKDAY (10 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Buat kolom "Adjusted Deadline" - jika project harus selesai 15 hari kerja:
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =WORKDAY(G2, 15)
+                                    </div>
+                                </li>
+                                <li>Hasil: Tanggal yang merupakan 15 hari kerja dari start date</li>
+                                <li><strong>Analisis:</strong> Apakah original deadline (kolom H) tercapai?</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">TAHAP C: Hitung Warranty Expiration dengan EDATE (10 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Asumsikan project adalah warranty period 12 bulan</li>
+                                <li>Buat kolom "Warranty Expiration":
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        =EDATE(H2, 12)
+                                    </div>
+                                </li>
+                                <li>Hasil: Tanggal warranty berakhir (12 bulan setelah project end)</li>
+                                <li><strong>Output:</strong> Setiap project punya warranty period yang jelas</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                            <h5 class="font-bold text-gray-800 mb-2">Latihan 2.2: Dashboard HR Analytics (20 menit)</h5>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li><strong>Buat Dashboard Area dengan metrics:</strong>
+                                    <div class="code-block p-2 my-2 rounded text-xs">
+                                        A. EMPLOYEE METRICS<br>
+                                        - Total Karyawan: =COUNTA(C2:C9)<br>
+                                        - Rata-rata Tenure: =AVERAGE(tenure_column)<br>
+                                        - Karyawan Terlama: [NAME]<br>
+                                        <br>
+                                        B. PROJECT METRICS<br>
+                                        - Total Working Days: =SUM(working_days)<br>
+                                        - Rata-rata Working Days: =AVERAGE(working_days)<br>
+                                        - Project Deadline Terdekat: =MIN(H2:H9)
+                                    </div>
+                                </li>
+                                <li>Gunakan formulas: COUNTA, AVERAGE, MAX, MIN, DATEDIF</li>
+                                <li><strong>Interpretasi:</strong> Siapa karyawan yang anniversary? Project mana yang critical?</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checklist & Submission -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Checklist & Pengumpulan</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div>
+                            <h4 class="font-bold mb-2">Checklist Pengerjaan (90 menit):</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 1 (40 min): Latihan 1.1, 1.2, 1.3 selesai tanpa error</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">LEVEL 2 (50 min): TAHAP A, B, C + Dashboard selesai</span>
+                                </label>
+                                <label class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                                    <input type="checkbox" class="mt-1 h-5 w-5 text-green-600 rounded">
+                                    <span class="text-gray-700">Finalisasi: File save dengan naming <strong>NAMA_NIM_Week4_DateTimeFunction.xlsx</strong></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-3 rounded border-l-4 border-green-500">
+                            <h4 class="font-bold mb-2">Rubric Penilaian:</h4>
+                            <table class="w-full text-xs">
+                                <tr class="border-b border-green-200">
+                                    <td class="p-2"><strong>C3 (Apply)</strong></td>
+                                    <td class="p-2">Semua formula TODAY, NOW, YEAR, MONTH, DAY, DATEDIF, NETWORKDAYS, WORKDAY, EDATE diinput benar</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2"><strong>C4 (Analyze)</strong></td>
+                                    <td class="p-2">Dashboard HR metrics akurat, timeline planning tepat, interpretasi business insight jelas</td>
+                                    <td class="p-2 text-right"><strong>50%</strong></td>
+                                </tr>
+                            </table>
+                            <p class="text-xs text-gray-600 mt-2"><strong>Passing:</strong> Score ≥ 70</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function copyTable() {
+            const table = document.getElementById('trainingTable');
+            const rows = Array.from(table.querySelectorAll('tr'));
+            // Date columns: Hire Date (index 3), Project Start (index 5), Project End (index 6)
+            const dateColumns = new Set([3, 5, 6]);
+
+            const tsv = rows.map((row) => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                return cells.map((cell, idx) => {
+                    let text = cell.innerText.trim();
+                    // Ensure date format is YYYY-MM-DD
+                    if (dateColumns.has(idx) && row.parentElement.tagName !== 'THEAD') {
+                        // Already in YYYY-MM-DD format from display, pass through as-is
+                        text = text.replace(/\//g, '-').trim();
+                    }
+                    return text;
+                }).join('\t');
+            }).join('\n');
+
+            const fallbackCopy = (value) => {
+                const ta = document.createElement('textarea');
+                ta.value = value;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(tsv)
+                    .catch(() => fallbackCopy(tsv))
+                    .finally(() => {
+                        alert('✓ Data berhasil disalin ke clipboard dalam format YYYY-MM-DD!\n\nPaste di Excel dengan Ctrl+V');
+                    });
+                return;
+            }
+
+            fallbackCopy(tsv);
+            alert('✓ Data berhasil disalin ke clipboard dalam format YYYY-MM-DD!\n\nPaste di Excel dengan Ctrl+V');
+        }
+    </script>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">Latihan Excel Dasar © 2026</p>
+            <p class="text-xs uppercase tracking-widest">Computer Practicum - STIE Malangkucecwara</p>
+        </div>
+    </footer>
+
+</body>
+</html>
