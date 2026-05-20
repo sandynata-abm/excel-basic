@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Pertemuan 8: Financial Functions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+      body { font-family: 'Inter', sans-serif; }
+      .excel-header { background-color: #217346; }
+      .code-block { background-color: #f5f5f5; border-left: 4px solid #217346; }
+      .obe-badge { background-color: #e8f5e9; border-left: 4px solid #217346; }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="excel-header text-white py-8">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold">Latihan Pertemuan 8: Financial Functions</h1>
+        <p class="mt-2 text-emerald-100">Microsoft Excel - PMT, PV, NPER, RATE, IPMT, PPMT</p>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+      <!-- Metadata & OBE -->
+      <section class="mb-12">
+        <div class="grid gap-6 md:grid-cols-3">
+          <!-- Info Box -->
+          <div class="md:col-span-2 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-2xl font-bold text-emerald-800 mb-4"><i class="fas fa-info-circle mr-2"></i>Informasi Dasar</h2>
+            <ul class="space-y-2 text-sm">
+              <li><strong>Kode Modul:</strong> EXCEL-008</li>
+              <li><strong>Pertemuan:</strong> 8</li>
+              <li><strong>Durasi Praktik:</strong> 90 menit</li>
+              <li><strong>Tingkat Kesulitan:</strong> <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Menengah (Intermediate)</span></li>
+              <li><strong>Prasyarat:</strong> Week 1 s.d. Week 7</li>
+            </ul>
+          </div>
+
+          <!-- OBE Quick Summary -->
+          <div class="bg-emerald-50 p-6 rounded-lg shadow border-l-4 border-emerald-700">
+            <h3 class="font-bold text-emerald-800 mb-3"><i class="fas fa-graduation-cap mr-2"></i>OBE Framework</h3>
+            <p class="text-xs text-gray-700 mb-3">Fokus pada <strong>hasil terukur</strong> (Bloom's Taxonomy)</p>
+            <div class="space-y-2">
+              <div class="text-xs">
+                <strong class="text-emerald-700">C3 Apply:</strong> Aplikasi fungsi finansial
+              </div>
+              <div class="text-xs">
+                <strong class="text-emerald-700">C4 Analyze:</strong> Analisis skema pembiayaan
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Outcomes -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-6"><i class="fas fa-bullseye mr-2"></i>Learning Outcomes</h2>
+        
+        <div class="grid gap-6 md:grid-cols-2">
+          <!-- C3 Apply -->
+          <div class="obe-badge p-6 rounded-lg">
+            <h3 class="font-bold text-emerald-800 mb-3">C3 (Apply) - Menerapkan</h3>
+            <ul class="space-y-2 text-sm">
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menggunakan PMT() untuk menghitung angsuran</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menggunakan PV() dan NPER() untuk analisis skenario</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menggunakan IPMT() dan PPMT() untuk komposisi pembayaran</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Membuat tabel amortisasi lengkap</li>
+            </ul>
+          </div>
+
+          <!-- C4 Analyze -->
+          <div class="obe-badge p-6 rounded-lg">
+            <h3 class="font-bold text-emerald-800 mb-3">C4 (Analyze) - Menganalisis</h3>
+            <ul class="space-y-2 text-sm">
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menganalisis dampak suku bunga & tenor</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Membandingkan skenario pembiayaan berbeda</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Merumuskan rekomendasi pembiayaan optimal</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Insight berbasis cash flow bisnis</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+          <p class="text-sm"><strong>OBE = Outcome Based Education:</strong> Fokus pada hasil terukur (learning outcomes), bukan hanya proses. C3=Aplikasi, C4=Analisis berdasarkan Bloom's Taxonomy.</p>
+        </div>
+      </section>
+
+      <!-- Materi Pembelajaran -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-6"><i class="fas fa-book mr-2"></i>Materi Pembelajaran Terstruktur (5 Blok)</h2>
+
+        <!-- Blok 1: PMT -->
+        <div class="mb-8 bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 1: Fungsi PMT() - Payment (Angsuran Tetap)</h3>
+          
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <h4 class="font-semibold mb-2">Definisi & Sintaks</h4>
+              <p class="text-sm mb-2">Menghitung pembayaran periodik yang sama (angsuran tetap) untuk melunasi pinjaman.</p>
+              <pre class="code-block rounded p-2 text-xs"><code>=PMT(rate, nper, pv)</code></pre>
+              <ul class="text-xs space-y-1 mt-2">
+                <li><strong>rate:</strong> 0.09/12 (bulanan)</li>
+                <li><strong>nper:</strong> 36 (periode)</li>
+                <li><strong>pv:</strong> -100000000 (gunakan tanda negatif)</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-semibold mb-2">Contoh Bisnis</h4>
+              <div class="code-block rounded p-2 text-xs mb-2">
+                <p><strong>PT Maju Jaya</strong></p>
+                <p>Pinjaman: Rp100 juta | Tenor: 36 bulan | Rate: 9% pa</p>
+                <p class="mt-1"><code>=PMT(0.09/12,36,-100000000)</code></p>
+                <p class="text-green-700 font-semibold">→ Rp3.140.656/bulan</p>
+              </div>
+              <p class="text-xs text-gray-600">💡 Angsuran Rp3.140.656 × 36 bulan = cicilan pinjaman.</p>
+            </div>
+          </div>
+
+          <div class="mt-4 bg-yellow-50 p-3 rounded border-l-4 border-yellow-500 text-xs">
+            <strong>⚠️ Catatan:</strong> Tanda negatif pada pv sangat penting! Excel menggunakan cash flow direction (inflow=+, outflow=-).
+          </div>
+        </div>
+
+        <!-- Blok 2: PV -->
+        <div class="mb-8 bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 2: Fungsi PV() - Present Value (Validasi Angsuran)</h3>
+          
+          <p class="text-sm mb-4">Menghitung nilai sekarang dari pembayaran di masa depan. <strong>Fungsi validasi</strong> untuk memastikan angsuran benar.</p>
+
+          <pre class="code-block rounded p-2 text-xs mb-4"><code>=PV(0.09/12, 36, -3140656)</code></pre>
+
+          <p class="text-xs text-gray-600">Hasil: ~Rp100.000.000 ✓ Validasi berhasil! Angsuran dihitung dengan benar.</p>
+        </div>
+
+        <!-- Blok 3: NPER & RATE -->
+        <div class="mb-8 bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 3: Fungsi NPER() dan RATE()</h3>
+          
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <h4 class="font-semibold mb-2">NPER() - Jumlah Periode</h4>
+              <p class="text-sm mb-2">Berapa lama untuk melunasi dengan angsuran & rate tertentu?</p>
+              <pre class="code-block rounded p-2 text-xs"><code>=NPER(0.09/12,-4000000,100000000)</code></pre>
+              <p class="text-xs text-green-700 font-semibold mt-2">→ 26.4 bulan (lebih cepat lunas, hemat bunga!)</p>
+            </div>
+
+            <div>
+              <h4 class="font-semibold mb-2">RATE() - Suku Bunga</h4>
+              <p class="text-sm mb-2">Berapa effective rate dari penawaran pembiayaan?</p>
+              <pre class="code-block rounded p-2 text-xs"><code>=RATE(36,-3140656,100000000)</code></pre>
+              <p class="text-xs text-green-700 font-semibold mt-2">→ 0.0075 (0.75% per bulan = 9% pa)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blok 4: IPMT & PPMT -->
+        <div class="mb-8 bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 4: Fungsi IPMT() dan PPMT() - Komposisi Pembayaran</h3>
+          
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="border-l-4 border-blue-500 pl-4">
+              <h4 class="font-semibold mb-2"><i class="fas fa-percent text-blue-600 mr-1"></i>IPMT() - Interest Payment</h4>
+              <p class="text-xs mb-2">Bunga yang dibayar pada periode tertentu.</p>
+              <ul class="text-xs space-y-1">
+                <li><strong>Per 1:</strong> Rp750.000 (besar)</li>
+                <li><strong>Per 36:</strong> Rp19.500 (kecil)</li>
+              </ul>
+              <p class="text-xs text-gray-600 mt-2">💡 <em>Awal tenor: mayoritas bayar bunga.</em></p>
+            </div>
+
+            <div class="border-l-4 border-purple-500 pl-4">
+              <h4 class="font-semibold mb-2"><i class="fas fa-coins text-purple-600 mr-1"></i>PPMT() - Principal Payment</h4>
+              <p class="text-xs mb-2">Pokok yang dibayar pada periode tertentu.</p>
+              <ul class="text-xs space-y-1">
+                <li><strong>Per 1:</strong> Rp2.390.656 (kecil)</li>
+                <li><strong>Per 36:</strong> Rp3.121.156 (besar)</li>
+              </ul>
+              <p class="text-xs text-gray-600 mt-2">💡 <em>Akhir tenor: mayoritas bayar pokok (equity build).</em></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blok 5: Tabel Amortisasi -->
+        <div class="mb-8 bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 5: Tabel Amortisasi (Aplikasi Terintegrasi)</h3>
+          
+          <h4 class="font-semibold mb-2">Header Kolom & Kegunaan</h4>
+          <div class="overflow-x-auto mb-4">
+            <table class="text-xs border-collapse border border-gray-300 w-full">
+              <tr class="bg-emerald-100">
+                <td class="border px-2 py-2"><strong>Periode</strong></td>
+                <td class="border px-2 py-2"><strong>Saldo Awal</strong></td>
+                <td class="border px-2 py-2"><strong>Angsuran</strong></td>
+                <td class="border px-2 py-2"><strong>Bunga</strong></td>
+                <td class="border px-2 py-2"><strong>Pokok</strong></td>
+                <td class="border px-2 py-2"><strong>Saldo Akhir</strong></td>
+              </tr>
+              <tr>
+                <td class="border px-2 py-2">1..36</td>
+                <td class="border px-2 py-2">=F prev</td>
+                <td class="border px-2 py-2">=PMT()</td>
+                <td class="border px-2 py-2">=IPMT()</td>
+                <td class="border px-2 py-2">=PPMT()</td>
+                <td class="border px-2 py-2">=B-E</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <h4 class="font-semibold text-sm mb-2">Kegunaan Bisnis</h4>
+              <ul class="text-xs space-y-1 list-disc list-inside">
+                <li>Dokumentasi formal kreditur/debitur</li>
+                <li>Accounting source jurnal bunga</li>
+                <li>Planning kapan saldo 50%, 75%</li>
+                <li>Negotiation perubahan rate</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-sm mb-2">Validasi Tabel</h4>
+              <ul class="text-xs space-y-1 list-disc list-inside bg-green-50 p-2 rounded">
+                <li>F (akhir) = 0 (pinjaman lunas)</li>
+                <li>SUM(Bunga) = total bunga</li>
+                <li>SUM(Pokok) = pinjaman awal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Latihan Praktikum -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-6"><i class="fas fa-tasks mr-2"></i>Latihan Praktikum (90 Menit)</h2>
+        
+        <!-- Level 1 -->
+        <div class="mb-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+          <h3 class="text-lg font-bold text-blue-900 mb-4"><i class="fas fa-level-up-alt mr-1"></i>LEVEL 1: Penerapan Dasar (40 menit)</h3>
+          
+          <div class="space-y-3">
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold text-sm mb-1">1.1 Hitung Angsuran dengan PMT() <span class="text-xs text-gray-500">10 menit</span></h4>
+              <p class="text-xs text-gray-700">Buat sheet DATA_INPUT, hitung angsuran di PROSES.</p>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold text-sm mb-1">1.2 Validasi dengan PV() <span class="text-xs text-gray-500">8 menit</span></h4>
+              <p class="text-xs text-gray-700">Hitung PV, bandingkan dengan pinjaman awal. Apakah sama?</p>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold text-sm mb-1">1.3 Analisis Multi-Tenor dengan NPER() <span class="text-xs text-gray-500">12 menit</span></h4>
+              <p class="text-xs text-gray-700">Hitung tenor jika angsuran berubah. Apa trade-off tenor panjang vs pendek?</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 2 -->
+        <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
+          <h3 class="text-lg font-bold text-purple-900 mb-4"><i class="fas fa-level-up-alt mr-1"></i>LEVEL 2: Tabel Amortisasi & Analisis (50 menit)</h3>
+          
+          <div class="space-y-3">
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold text-sm mb-1">2.1 Build Amortization Table <span class="text-xs text-gray-500">20 menit</span></h4>
+              <p class="text-xs text-gray-700">Buat 36 periode dengan PMT, IPMT, PPMT. Validasi saldo akhir = 0.</p>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold text-sm mb-1">2.2 Analisis Komposisi <span class="text-xs text-gray-500">15 menit</span></h4>
+              <p class="text-xs text-gray-700">Hitung total bunga %, pokok %. Lihat pola: awal bunga, akhir pokok.</p>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold text-sm mb-1">2.3 Skenario & Rekomendasi <span class="text-xs text-gray-500">15 menit</span></h4>
+              <p class="text-xs text-gray-700">Bandingkan tenor 24/36/48. Tulis 3 insight + 2 rekomendasi management.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tips & Checklist -->
+      <section class="mb-12">
+        <div class="grid gap-6 md:grid-cols-2">
+          <!-- Tips -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-emerald-800 mb-4"><i class="fas fa-lightbulb mr-2"></i>Tips & Best Practices</h3>
+            
+            <div class="space-y-3">
+              <div class="border-l-4 border-emerald-600 pl-3">
+                <h4 class="font-semibold text-sm">Tanda Cash Flow Penting</h4>
+                <p class="text-xs text-gray-600">Gunakan negatif pada pv/pmt agar hasil konsisten.</p>
+              </div>
+
+              <div class="border-l-4 border-emerald-600 pl-3">
+                <h4 class="font-semibold text-sm">Konsistensi Rate & NPER</h4>
+                <p class="text-xs text-gray-600">Rate bulanan → nper dalam bulan. Jangan mix.</p>
+              </div>
+
+              <div class="border-l-4 border-emerald-600 pl-3">
+                <h4 class="font-semibold text-sm">Pembulatan Rupiah</h4>
+                <p class="text-xs text-gray-600">Gunakan =ROUND(..., 0) untuk desimal minimal.</p>
+              </div>
+
+              <div class="border-l-4 border-emerald-600 pl-3">
+                <h4 class="font-semibold text-sm">Validasi Tabel</h4>
+                <p class="text-xs text-gray-600">Cek: saldo akhir ≈ 0, SUM pokok = pinjaman.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checklist -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-emerald-800 mb-4"><i class="fas fa-clipboard-check mr-2"></i>Checklist Implementasi</h3>
+            
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> DATA_INPUT (parameter pinjaman)</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> PROSES (amortisasi 36 periode)</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> Validasi saldo akhir ≈ 0</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> DASHBOARD (KPI: angsuran, total, bunga)</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> 3+ insight berbasis data</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> 2+ rekomendasi management</li>
+            </ul>
+
+            <div class="mt-4 bg-emerald-50 p-3 rounded text-xs border-l-4 border-emerald-600">
+              <strong>KPI Dashboard:</strong><br>
+              • Angsuran = PMT()<br>
+              • Total = PMT × nper<br>
+              • Bunga = Total - Pinjaman
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Outcomes Recap -->
+      <section class="mb-12 bg-emerald-50 p-6 rounded-lg border-2 border-emerald-300">
+        <h3 class="text-lg font-bold text-emerald-800 mb-4"><i class="fas fa-star mr-2"></i>Kompetensi Tercapai</h3>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="bg-white p-4 rounded">
+            <p class="text-sm font-semibold text-emerald-700">✅ C3 (Apply)</p>
+            <p class="text-xs text-gray-700 mt-1">Mahasiswa bisa mengaplikasikan PMT, PV, NPER, RATE, IPMT, PPMT pada kasus nyata.</p>
+          </div>
+          <div class="bg-white p-4 rounded">
+            <p class="text-sm font-semibold text-emerald-700">✅ C4 (Analyze)</p>
+            <p class="text-xs text-gray-700 mt-1">Mahasiswa bisa menganalisis dampak rate/tenor pada total cost dan cash flow bisnis.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+      <div class="container mx-auto px-4 text-center text-sm">
+        <p>Latihan Pertemuan 8 | EXCEL-008 | <a href="GLOBAL_DOC.md" class="text-emerald-400 hover:underline">Panduan Teknis Global</a> | <a href="week8.md" class="text-emerald-400 hover:underline">Markdown</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
