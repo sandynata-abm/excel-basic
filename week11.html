@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Pertemuan 11: Data Management and Cleansing for Accountants</title>
+    <title>Latihan Pertemuan 11: Trend Visualization and Basic Data Audit</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -18,8 +18,8 @@
     <!-- Header -->
     <header class="excel-header text-white py-8">
       <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold">Latihan Pertemuan 11: Data Management and Cleansing for Accountants</h1>
-        <p class="mt-2 text-emerald-100">Microsoft Excel - Import Data, Text to Columns, Remove Duplicates, Format as Table, Sort, Filter, Group & Ungroup</p>
+        <h1 class="text-4xl font-bold">Latihan Pertemuan 11: Trend Visualization and Basic Data Audit</h1>
+        <p class="mt-2 text-emerald-100">Microsoft Excel - Conditional Formatting, Sparklines, Data Validation, Slicers, Freeze Panes</p>
       </div>
     </header>
 
@@ -34,8 +34,8 @@
               <li><strong>Kode Modul:</strong> EXCEL-011</li>
               <li><strong>Pertemuan:</strong> 11</li>
               <li><strong>Durasi Praktik:</strong> 90 menit</li>
-              <li><strong>Tingkat Kesulitan:</strong> <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Dasar (Basic)</span></li>
-              <li><strong>Prasyarat:</strong> Week 1 s.d. Week 10</li>
+              <li><strong>Tingkat Kesulitan:</strong> <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Dasar - Menengah (Basic to Intermediate)</span></li>
+              <li><strong>Prasyarat:</strong> Week 1 s.d. Week 11 (khususnya Format as Table)</li>
             </ul>
           </div>
 
@@ -45,10 +45,10 @@
             <p class="text-xs text-gray-700 mb-3">Fokus pada <strong>hasil terukur</strong> (Bloom's Taxonomy)</p>
             <div class="space-y-2">
               <div class="text-xs">
-                <strong class="text-emerald-700">C3 Apply:</strong> Aplikasi cleansing & organisasi data
+                <strong class="text-emerald-700">C3 Apply:</strong> Visualisasi data mikro & kontrol input
               </div>
               <div class="text-xs">
-                <strong class="text-emerald-700">C4 Analyze:</strong> Analisis transaksi & penyajian laporan
+                <strong class="text-emerald-700">C4 Analyze:</strong> Efektivitas pelaporan & audit data
               </div>
             </div>
           </div>
@@ -64,9 +64,9 @@
           <div class="obe-badge p-6 rounded-lg">
             <h3 class="font-bold text-emerald-800 mb-3">C3 (Apply) - Menerapkan</h3>
             <ul class="space-y-2 text-sm">
-              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Melakukan <strong>Import Data</strong> dari file eksternal (.csv/.txt)</li>
-              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Melakukan <strong>Data Cleansing</strong> menggunakan Text to Columns &amp; Remove Duplicates</li>
-              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Mengorganisir data menggunakan fitur <strong>Format as Table</strong></li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menggunakan <strong>Conditional Formatting</strong> untuk identifikasi anomali data</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Membuat <strong>Sparklines</strong> untuk melihat tren performa keuangan secara ringkas</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menerapkan <strong>Data Validation</strong> dengan Error Alerts untuk menjaga integritas data</li>
             </ul>
           </div>
 
@@ -74,9 +74,8 @@
           <div class="obe-badge p-6 rounded-lg">
             <h3 class="font-bold text-emerald-800 mb-3">C4 (Analyze) - Menganalisis</h3>
             <ul class="space-y-2 text-sm">
-              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menggunakan <strong>Sorting</strong> dan <strong>Filtering</strong> untuk menemukan transaksi spesifik</li>
-              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menerapkan <strong>Group and Ungroup</strong> untuk membuat ringkasan laporan (outlining)</li>
-              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menyajikan informasi keuangan secara terstruktur</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menggunakan <strong>Slicers</strong> sebagai alat bantu filter visual yang interaktif</li>
+              <li><i class="fas fa-check text-emerald-600 mr-2"></i>Menerapkan <strong>Freeze Panes</strong> untuk manajemen tampilan data berskala besar</li>
             </ul>
           </div>
         </div>
@@ -90,149 +89,80 @@
       <section class="mb-12">
         <h2 class="text-3xl font-bold text-emerald-800 mb-6"><i class="fas fa-book mr-2"></i>Materi Pembelajaran Terstruktur (3 Blok)</h2>
 
-        <!-- Blok 1: Get & Clean Data -->
+        <!-- Blok 1: Visual Auditing -->
         <div class="mb-8 bg-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 1: Get &amp; Clean Data (Persiapan Data Akuntansi)</h3>
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 1: Visual Auditing (Conditional Formatting)</h3>
 
           <div class="grid gap-4 md:grid-cols-2">
             <div>
               <h4 class="font-semibold mb-2">Definisi</h4>
-              <p class="text-sm mb-2">Proses mengambil data mentah dari sistem akuntansi lain dan membersihkannya agar siap diolah di Excel.</p>
+              <p class="text-sm mb-2">Fitur untuk mengubah format sel secara otomatis berdasarkan kriteria tertentu untuk mempermudah pemeriksaan (auditing).</p>
               <ul class="text-xs space-y-1 list-disc list-inside">
-                <li><strong>Import External Data:</strong> Membuka file berbasis teks (.txt atau .csv) ke dalam spreadsheet.</li>
-                <li><strong>Text to Columns:</strong> Memecah satu sel berisi teks panjang (misal: "KODE-NAMA AKUN") menjadi kolom terpisah.</li>
-                <li><strong>Remove Duplicates:</strong> Memastikan integritas data dengan menghapus baris transaksi yang terinput ganda.</li>
+                <li><strong>Highlight Cells Rules:</strong> Menandai saldo minus (merah) atau pendapatan di atas target (hijau).</li>
+                <li><strong>Duplicate Values:</strong> Menemukan entri ganda yang terlewat pada tahap pembersihan data.</li>
               </ul>
             </div>
 
             <div>
               <h4 class="font-semibold mb-2">Contoh Penerapan</h4>
               <div class="code-block rounded p-2 text-xs mb-2">
-                <p><strong>Data Mentah (satu kolom):</strong></p>
-                <p><code>2024-01-15,Pembelian ATK,1.200.000</code></p>
-                <p><code>2024-01-15,Pembelian ATK,1.200.000</code> <span class="text-red-600">(duplikat)</span></p>
-                <p class="mt-1"><strong>Setelah Text to Columns:</strong></p>
-                <p>Tanggal | Keterangan | Nominal</p>
-                <p class="mt-1"><strong>Setelah Remove Duplicates:</strong></p>
-                <p>1 baris duplikat terhapus ✓</p>
+                <p><strong>Data Penjualan Cabang:</strong></p>
+                <p>Cabang A: Jan 45jt (merah karena &lt;50jt)</p>
+                <p>Cabang B: Jan 72jt (normal)</p>
+                <p class="mt-1"><strong>Duplicate ID:</strong> ID-001 muncul dua kali → otomatis terhighlight</p>
               </div>
-              <p class="text-xs text-gray-600">💡 Selalu backup data asli sebelum membersihkan.</p>
+              <p class="text-xs text-gray-600">💡 Gunakan warna standar akuntansi: Hijau = positif, Merah = negatif.</p>
             </div>
-          </div>
-
-          <div class="mt-6 bg-gray-100 p-5 rounded-lg border border-gray-200">
-  <h4 class="font-semibold text-sm mb-3"><i class="fas fa-database mr-2 text-emerald-700"></i>Data Mentah Latihan Blok 1 (CSV)</h4>
-  <pre id="rawDataBlock1" class="bg-white p-3 rounded text-xs border overflow-x-auto" style="max-height: 240px;">
-2024-01-15,Pembelian ATK,1200000
-2024-01-15,Pembelian ATK,1200000
-2024-01-16,Bayar Listrik Kantor,850000
-2024-01-16,Pendapatan Jasa,5000000
-2024-01-17,Biaya Internet &amp; Wifi,450000
-2024-01-17,Biaya Internet &amp; Wifi,450000
-2024-01-18,Pembelian Konsumsi Rapat,300000
-2024-01-19,Biaya Transportasi Kurir,150000
-2024-01-19,Biaya Transportasi Kurir,150000
-2024-01-20,Gaji Staff Admin,4500000
-2024-01-20,Pendapatan Jasa,3500000
-2024-01-20,Pendapatan Jasa,3500000
-2024-01-21,Biaya Kebersihan &amp; Keamanan,250000
-2024-01-22,Pembelian Tinta Printer,550000
-2024-01-22,Pembelian Tinta Printer,550000
-2024-01-23,Pendapatan Jasa,2750000
-2024-01-24,Biaya Perbaikan AC,400000
-2024-01-25,Pembelian Air Mineral Galon,120000
-2024-01-25,Pembelian Air Mineral Galon,120000
-2024-01-26,Bayar Iklan Media Sosial,1000000
-  </pre>
-  <button onclick="copyRawData()" class="mt-3 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded text-xs font-medium transition">
-    <i class="fas fa-copy mr-1"></i> Salin Data
-  </button>
-  <span id="copyFeedback" class="ml-2 text-xs text-emerald-700 hidden">✓ Tersalin!</span>
-</div>
-
-<!-- Data Set Tambahan: Nilai Mahasiswa -->
-<div class="mt-6 bg-gray-100 p-5 rounded-lg border border-gray-200">
-  <h4 class="font-semibold text-sm mb-3"><i class="fas fa-graduation-cap mr-2 text-blue-700"></i>Data Latihan Tambahan: Nilai Mahasiswa (CSV)</h4>
-  <pre id="rawDataAdditional" class="bg-white p-3 rounded text-xs border overflow-x-auto" style="max-height: 240px;">
-student id;name;middle;final
-20230101;Ahmad Fauzi;82;85
-20230102;Bunga Lestari;78;80
-20230103;Citra Kirana;90;92
-20230104;Dedi Hermawan;65;70
-20230105;Eka Putri;88;86
-20230106;Fajar Ramadhan;72;74
-20230107;Gita Amalia;95;94
-20230108;Hadi Wijaya;60;68
-20230109;Indah Permata;84;82
-20230110;Joko Susilo;77;79
-20230111;Kartika Sari;81;83
-20230112;Lutfi Hakim;89;91
-20230113;Maya Safira;75;77
-20230114;Nanda Pratama;68;72
-20230115;Olivia Zalianty;92;90
-20230116;Putra Restu;70;75
-20230117;Qori Sandioriva;83;85
-20230118;Rian Ardianto;79;81
-20230119;Sinta Bella;87;88
-20230120;Taufik Hidayat;64;66
-  </pre>
-  <button onclick="copyAdditionalData()" class="mt-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-xs font-medium transition">
-    <i class="fas fa-copy mr-1"></i> Salin Data Nilai
-  </button>
-  <span id="copyFeedbackAdd" class="ml-2 text-xs text-blue-700 hidden">✓ Tersalin!</span>
-</div>
-
-          <div class="mt-4 bg-yellow-50 p-3 rounded border-l-4 border-yellow-500 text-xs">
-            <strong>⚠️ Catatan:</strong> Pastikan delimiter yang digunakan tepat (koma / titik koma) saat melakukan Text to Columns. Cek regional settings Excel Anda.
           </div>
         </div>
 
-        <!-- Blok 2: Organize & Analyze -->
+        <!-- Blok 2: Micro Charts & Visual Filtering -->
         <div class="mb-8 bg-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 2: Organize &amp; Analyze (Strukturasi Data)</h3>
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 2: Micro Charts &amp; Visual Filtering (Sparklines &amp; Slicers)</h3>
 
           <div class="grid gap-4 md:grid-cols-2">
             <div>
               <h4 class="font-semibold mb-2">Definisi</h4>
-              <p class="text-sm mb-2">Mengubah data mentah menjadi informasi yang mudah dicari dan diurutkan.</p>
+              <p class="text-sm mb-2">Alat bantu untuk menyajikan tren dan navigasi data secara visual tanpa grafik yang kompleks.</p>
               <ul class="text-xs space-y-1 list-disc list-inside">
-                <li><strong>Format as Table:</strong> Mengaktifkan fitur tabel otomatis untuk mempermudah manajemen referensi data.</li>
-                <li><strong>Sorting &amp; Filtering:</strong> Mengurutkan data berdasarkan nominal/tanggal dan menyaring akun tertentu (misal: hanya "Beban Gaji").</li>
+                <li><strong>Sparklines:</strong> Grafik mini dalam satu sel (Line atau Column) untuk melihat fluktuasi kas/penjualan bulanan.</li>
+                <li><strong>Slicers:</strong> Tombol filter visual yang terhubung dengan Table (mempermudah user non-teknis melakukan filter data).</li>
               </ul>
             </div>
 
             <div>
-              <h4 class="font-semibold mb-2">Manfaat dalam Akuntansi</h4>
+              <h4 class="font-semibold mb-2">Manfaat</h4>
               <ul class="text-xs space-y-2">
-                <li><i class="fas fa-check-circle text-green-600 mr-1"></i> Filter cepat untuk melihat transaksi akun tertentu</li>
-                <li><i class="fas fa-check-circle text-green-600 mr-1"></i> Sorting untuk menemukan nominal tertinggi/terendah</li>
-                <li><i class="fas fa-check-circle text-green-600 mr-1"></i> Nama tabel memudahkan pembuatan rumus dinamis</li>
+                <li><i class="fas fa-check-circle text-green-600 mr-1"></i> Sparklines: Bandingkan tren antar cabang dalam sekejap</li>
+                <li><i class="fas fa-check-circle text-green-600 mr-1"></i> Slicers: Filter interaktif tanpa menggunakan dropdown</li>
+                <li><i class="fas fa-check-circle text-green-600 mr-1"></i> Cocok untuk dashboard yang mudah digunakan </li>
               </ul>
-              <p class="text-xs text-gray-600 mt-2">💡 Beri nama tabel (Table Name) agar mudah dirujuk di formula.</p>
             </div>
           </div>
         </div>
 
-        <!-- Blok 3: Data Outlining -->
+        <!-- Blok 3: Data Integrity & View Management -->
         <div class="mb-8 bg-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 3: Data Outlining (Presentasi Laporan)</h3>
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Blok 3: Data Integrity &amp; View Management (Validation &amp; Freeze Panes)</h3>
 
           <div class="grid gap-4 md:grid-cols-2">
             <div>
               <h4 class="font-semibold mb-2">Definisi</h4>
-              <p class="text-sm mb-2">Meringkas data transaksi yang detail menjadi tampilan per kategori menggunakan fitur <strong>Group/Ungroup</strong>.</p>
+              <p class="text-sm mb-2">Memastikan data yang dimasukkan benar sejak awal dan mempermudah navigasi laporan yang panjang.</p>
               <ul class="text-xs space-y-1 list-disc list-inside">
-                <li>Menyembunyikan detail harian, hanya menampilkan total mingguan</li>
-                <li>Memudahkan presentasi ke manajer tanpa kehilangan detail</li>
+                <li><strong>Data Validation (Advanced):</strong> Mengatur pesan kesalahan (Error Alert) jika user memasukkan angka di luar batas yang ditentukan atau teks yang salah.</li>
+                <li><strong>Freeze Panes:</strong> Mengunci baris judul agar tetap terlihat saat menggulir (scrolling) ribuan data transaksi.</li>
               </ul>
             </div>
 
             <div>
-              <h4 class="font-semibold mb-2">Contoh Penggunaan</h4>
+              <h4 class="font-semibold mb-2">Contoh Implementasi</h4>
               <div class="code-block rounded p-2 text-xs">
-                <p><strong>Sebelum Group:</strong> 30 baris transaksi harian</p>
-                <p><strong>Sesudah Group:</strong> 4 baris ringkasan mingguan + tombol expand</p>
-                <p class="mt-1 text-gray-600">📍 <em>Klik tanda + untuk melihat detail, - untuk menyembunyikan.</em></p>
+                <p><strong>Data Validation:</strong></p>
+                <p>Kolom "Target" hanya boleh 0-100%</p>
+                <p>Error Alert: "Input Salah – Nilai target tidak boleh lebih dari 100%"</p>
+                <p class="mt-1"><strong>Freeze Panes:</strong></p>
+                <p>Baris judul tetap terlihat saat scroll ke bawah</p>
               </div>
             </div>
           </div>
@@ -243,21 +173,34 @@ student id;name;middle;final
       <section class="mb-12">
         <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-600">
           <h3 class="text-xl font-bold text-indigo-900 mb-4"><i class="fas fa-database mr-2"></i>Struktur Data Praktik</h3>
-          <h4 class="font-semibold mb-2">Kasus Bisnis: Mutasi Rekening Bank CV XYZ</h4>
+          <h4 class="font-semibold mb-2">Kasus Bisnis: Laporan Evaluasi Kinerja CV Komputer Indonesia</h4>
           <p class="text-sm text-gray-700 mb-3">
-            <strong>Konteks:</strong> Anda menerima data mutasi bank dalam format teks (.csv) yang berantakan dari sistem perbankan.
-            Data ini berisi transaksi ganda dan informasi yang tergabung dalam satu kolom. Anda diminta untuk merapikannya
-            menjadi laporan yang siap dipresentasikan kepada Manajer Keuangan.
+            <strong>Konteks Bisnis:</strong> CV Komputer Indonesia sedang mengevaluasi performa penjualan dan arus kas di berbagai cabang selama 6 bulan terakhir. Anda diminta untuk membuat dashboard sederhana yang bisa mendeteksi kesalahan input (audit) dan menunjukkan tren penjualan.
           </p>
           <div class="bg-white p-3 rounded text-xs">
-            <p class="font-semibold mb-1">Contoh Data Mentah (satu kolom):</p>
-            <code>
-              2024-01-01,Setoran Tunai,50.000.000<br>
-              2024-01-03,Beban Operasional,2.500.000<br>
-              2024-01-03,Beban Operasional,2.500.000 <span class="text-red-500">(duplikat)</span><br>
-              2024-01-05,Pembayaran Gaji,15.000.000<br>
-              2024-01-08,Beban Listrik,1.200.000
-            </code>
+            <p class="font-semibold mb-1">Dataset: Penjualan Cabang (CSV)</p>
+            <pre id="rawDataWeek12" class="bg-white p-2 rounded border overflow-x-auto" style="max-height: 240px;">
+ID Transaksi,Cabang,Wilayah,Kategori Produk,Jan,Feb,Mar,Apr,Mei,Juni,Target
+TRX001,Cabang A,Jawa Timur,Laptop,45,52,48,55,60,58,85
+TRX002,Cabang B,Jawa Barat,Printer,72,68,75,80,82,85,90
+TRX003,Cabang C,Jawa Tengah,Laptop,38,42,40,45,50,48,70
+TRX004,Cabang D,Jawa Timur,Tablet,60,65,70,68,72,75,95
+TRX005,Cabang E,Jawa Barat,Aksesoris,55,58,52,60,65,62,80
+TRX006,Cabang F,Jawa Tengah,Printer,42,45,40,48,50,55,75
+TRX007,Cabang B,Jawa Barat,Laptop,78,80,85,90,88,92,100
+TRX008,Cabang A,Jawa Timur,Tablet,48,50,45,52,55,50,70
+TRX009,Cabang C,Jawa Tengah,Printer,35,38,40,42,45,40,60
+TRX010,Cabang D,Jawa Timur,Aksesoris,65,70,68,72,78,80,95
+TRX011,Cabang E,Jawa Barat,Tablet,60,62,58,64,68,70,85
+TRX012,Cabang F,Jawa Tengah,Laptop,40,42,38,45,48,42,65
+TRX013,Cabang A,Jawa Timur,Printer,50,55,52,58,60,55,80
+TRX014,Cabang B,Jawa Barat,Laptop,82,85,88,92,90,95,100
+TRX015,Cabang C,Jawa Tengah,Aksesoris,30,35,32,38,40,35,50
+            </pre>
+            <button onclick="copyWeek11Data()" class="mt-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded text-xs font-medium transition">
+              <i class="fas fa-copy mr-1"></i> Salin Data
+            </button>
+            <span id="copyFeedback12" class="ml-2 text-xs text-indigo-700 hidden">✓ Tersalin!</span>
           </div>
         </div>
       </section>
@@ -268,47 +211,47 @@ student id;name;middle;final
 
         <!-- Level 1 -->
         <div class="mb-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
-          <h3 class="text-lg font-bold text-blue-900 mb-4"><i class="fas fa-level-up-alt mr-1"></i>LEVEL 1: Data Cleansing &amp; Import (40 menit)</h3>
-          <p class="text-xs text-gray-600 mb-3">Fokus: Import, Text to Columns, Remove Duplicates</p>
+          <h3 class="text-lg font-bold text-blue-900 mb-4"><i class="fas fa-level-up-alt mr-1"></i>LEVEL 1: Visual Auditing &amp; Trend Monitoring (40 menit)</h3>
+          <p class="text-xs text-gray-600 mb-3">Fokus: Conditional Formatting &amp; Sparklines</p>
 
           <div class="space-y-3">
             <div class="bg-white p-4 rounded">
-              <h4 class="font-semibold text-sm mb-1">1.1 Persiapan Data <span class="text-xs text-gray-500">10 menit</span></h4>
-              <p class="text-xs text-gray-700">Salin data mentah yang disediakan ke Excel. Simpan satu salinan sebagai backup.</p>
+              <h4 class="font-semibold text-sm mb-1">1.1 Conditional Formatting <span class="text-xs text-gray-500">15 menit</span></h4>
+              <p class="text-xs text-gray-700">Gunakan <strong>Highlight Cells Rules</strong> untuk memberi warna merah pada angka penjualan yang di bawah 50 juta (kolom Jan‑Juni).</p>
             </div>
             <div class="bg-white p-4 rounded">
-              <h4 class="font-semibold text-sm mb-1">1.2 Text to Columns <span class="text-xs text-gray-500">15 menit</span></h4>
-              <p class="text-xs text-gray-700">Gunakan <strong>Text to Columns</strong> dengan <em>Delimited</em> (Koma) untuk memisahkan Tanggal, Keterangan, dan Nominal.</p>
+              <h4 class="font-semibold text-sm mb-1">1.2 Duplicate Detection <span class="text-xs text-gray-500">10 menit</span></h4>
+              <p class="text-xs text-gray-700">Gunakan fitur <strong>Duplicate Values</strong> pada kolom "ID Transaksi" untuk memastikan tidak ada input ganda.</p>
             </div>
             <div class="bg-white p-4 rounded">
-              <h4 class="font-semibold text-sm mb-1">1.3 Remove Duplicates <span class="text-xs text-gray-500">15 menit</span></h4>
-              <p class="text-xs text-gray-700">Gunakan <strong>Remove Duplicates</strong> untuk menghapus transaksi yang terekam dua kali.</p>
-              <p class="text-xs text-gray-500 mt-1"><strong>Pertanyaan Analisis:</strong> Mengapa proses pembersihan data krusial sebelum membuat jurnal akuntansi?</p>
+              <h4 class="font-semibold text-sm mb-1">1.3 Sparklines untuk Tren <span class="text-xs text-gray-500">15 menit</span></h4>
+              <p class="text-xs text-gray-700">Pada kolom "Tren" (buat sendiri), buatlah <strong>Sparklines</strong> (Line) yang merangkum data penjualan dari Januari hingga Juni.</p>
+              <p class="text-xs text-gray-500 mt-1"><strong>Pertanyaan Analisis:</strong> Berdasarkan Sparklines, cabang mana yang menunjukkan tren penurunan konsisten?</p>
             </div>
           </div>
         </div>
 
         <!-- Level 2 -->
         <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
-          <h3 class="text-lg font-bold text-purple-900 mb-4"><i class="fas fa-level-up-alt mr-1"></i>LEVEL 2: Data Organizing &amp; Reporting (50 menit)</h3>
-          <p class="text-xs text-gray-600 mb-3">Fokus: Format as Table, Sort, Filter, Grouping</p>
+          <h3 class="text-lg font-bold text-purple-900 mb-4"><i class="fas fa-level-up-alt mr-1"></i>LEVEL 2: Data Integrity &amp; Interactive Dashboard (50 menit)</h3>
+          <p class="text-xs text-gray-600 mb-3">Fokus: Data Validation, Slicers, Freeze Panes</p>
 
           <div class="space-y-3">
             <div class="bg-white p-4 rounded">
-              <h4 class="font-semibold text-sm mb-1">2.1 Format as Table <span class="text-xs text-gray-500">10 menit</span></h4>
-              <p class="text-xs text-gray-700">Ubah data yang sudah bersih menjadi <strong>Format as Table</strong>. Beri nama tabel yang deskriptif.</p>
+              <h4 class="font-semibold text-sm mb-1">2.1 Freeze Panes <span class="text-xs text-gray-500">5 menit</span></h4>
+              <p class="text-xs text-gray-700">Aktifkan <strong>Freeze Panes</strong> pada baris judul agar navigasi data tetap nyaman.</p>
             </div>
             <div class="bg-white p-4 rounded">
-              <h4 class="font-semibold text-sm mb-1">2.2 Sorting &amp; Filtering <span class="text-xs text-gray-500">15 menit</span></h4>
-              <p class="text-xs text-gray-700">Lakukan <strong>Sorting</strong> berdasarkan nominal terbesar ke terkecil untuk mendeteksi pengeluaran signifikan. Gunakan <strong>Filter</strong> untuk hanya menampilkan transaksi "Beban Operasional".</p>
+              <h4 class="font-semibold text-sm mb-1">2.2 Data Validation dengan Error Alert <span class="text-xs text-gray-500">15 menit</span></h4>
+              <p class="text-xs text-gray-700">Terapkan <strong>Data Validation</strong> pada kolom "Target": hanya boleh diisi angka antara 0 - 100. Buat <strong>Error Alert</strong> berjudul "Input Salah" dengan pesan "Nilai target tidak boleh lebih dari 100%".</p>
             </div>
             <div class="bg-white p-4 rounded">
-              <h4 class="font-semibold text-sm mb-1">2.3 Grouping &amp; Outlining <span class="text-xs text-gray-500">15 menit</span></h4>
-              <p class="text-xs text-gray-700">Gunakan fitur <strong>Group</strong> pada baris transaksi mingguan untuk menyembunyikan detail harian (Outlining).</p>
+              <h4 class="font-semibold text-sm mb-1">2.3 Slicer untuk Filter Visual <span class="text-xs text-gray-500">15 menit</span></h4>
+              <p class="text-xs text-gray-700">Karena data sudah dalam bentuk Table, tambahkan <strong>Slicer</strong> berdasarkan "Wilayah" dan "Kategori Produk". Gunakan Slicer untuk menampilkan hanya wilayah "Jawa Timur".</p>
             </div>
             <div class="bg-white p-4 rounded">
-              <h4 class="font-semibold text-sm mb-1">2.4 Validasi <span class="text-xs text-gray-500">10 menit</span></h4>
-              <p class="text-xs text-gray-700">Pastikan total saldo akhir sesuai dengan data bank asli. Periksa apakah tabel sudah memiliki filter otomatis di setiap kolom.</p>
+              <h4 class="font-semibold text-sm mb-1">2.4 Validasi Akhir <span class="text-xs text-gray-500">15 menit</span></h4>
+              <p class="text-xs text-gray-700">Cek apakah Slicer berfungsi memotong data secara otomatis. Tes validasi data dengan memasukkan angka 150; pastikan pesan kesalahan muncul.</p>
             </div>
           </div>
         </div>
@@ -323,23 +266,18 @@ student id;name;middle;final
 
             <div class="space-y-3">
               <div class="border-l-4 border-emerald-600 pl-3">
-                <h4 class="font-semibold text-sm">Gunakan Delimiter yang Tepat</h4>
-                <p class="text-xs text-gray-600">Periksa apakah data menggunakan koma (,) atau titik koma (;) saat melakukan Text to Columns.</p>
+                <h4 class="font-semibold text-sm">Gunakan Warna yang Intuitif</h4>
+                <p class="text-xs text-gray-600">Hijau untuk positif/aman, Merah untuk negatif/bahaya (Standar Akuntansi).</p>
               </div>
 
               <div class="border-l-4 border-emerald-600 pl-3">
-                <h4 class="font-semibold text-sm">Backup Data Asli</h4>
-                <p class="text-xs text-gray-600">Selalu simpan satu salinan data mentah sebelum melakukan Remove Duplicates.</p>
+                <h4 class="font-semibold text-sm">Slicer untuk Presentasi</h4>
+                <p class="text-xs text-gray-600">Saat mempresentasikan data ke manajemen, gunakan Slicer daripada filter manual di judul kolom karena lebih user-friendly.</p>
               </div>
 
               <div class="border-l-4 border-emerald-600 pl-3">
-                <h4 class="font-semibold text-sm">Tanda Tabel</h4>
-                <p class="text-xs text-gray-600">Memberikan nama pada <em>Table</em> di Excel (Table Name) akan sangat memudahkan saat bekerja dengan rumus di pertemuan selanjutnya.</p>
-              </div>
-
-              <div class="border-l-4 border-emerald-600 pl-3">
-                <h4 class="font-semibold text-sm">Cek Regional Settings</h4>
-                <p class="text-xs text-gray-600">Pastikan format tanggal dan desimal sesuai dengan regional settings Excel Anda agar import data berjalan lancar.</p>
+                <h4 class="font-semibold text-sm">Hati-hati dengan Conditional Formatting</h4>
+                <p class="text-xs text-gray-600">Jangan terlalu banyak memberikan warna berbeda dalam satu sheet karena akan membuat laporan sulit dibaca (distorsi visual).</p>
               </div>
             </div>
           </div>
@@ -349,18 +287,19 @@ student id;name;middle;final
             <h3 class="font-bold text-emerald-800 mb-4"><i class="fas fa-clipboard-check mr-2"></i>Checklist Penilaian</h3>
 
             <ul class="space-y-2 text-sm">
-              <li class="flex items-center"><input type="checkbox" class="mr-3"> Berhasil melakukan Import/Copy data teks ke kolom Excel</li>
-              <li class="flex items-center"><input type="checkbox" class="mr-3"> Data bersih dari duplikasi</li>
-              <li class="flex items-center"><input type="checkbox" class="mr-3"> Menggunakan <em>Format as Table</em> dengan desain profesional</li>
-              <li class="flex items-center"><input type="checkbox" class="mr-3"> Mampu mendemonstrasikan hasil filter transaksi spesifik</li>
-              <li class="flex items-center"><input type="checkbox" class="mr-3"> Menggunakan <em>Group/Ungroup</em> untuk meringkas tampilan laporan</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> Berhasil menandai saldo anomali dengan warna otomatis</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> Sparklines muncul dan mencerminkan tren data yang benar</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> Pesan Error Alert muncul saat terjadi kesalahan input data</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> Slicer berfungsi untuk menyaring data secara visual</li>
+              <li class="flex items-center"><input type="checkbox" class="mr-3"> Judul kolom tetap terlihat saat data di-scroll ke bawah (Freeze Panes)</li>
             </ul>
 
             <div class="mt-4 bg-emerald-50 p-3 rounded text-xs border-l-4 border-emerald-600">
-              <strong>Validasi Laporan:</strong><br>
-              • Total saldo akhir sesuai data bank asli<br>
-              • Tabel memiliki filter otomatis di setiap kolom<br>
-              • Outlining berfungsi (expand/collapse)
+              <strong>Validasi Dashboard:</strong><br>
+              • Conditional Formatting bekerja pada sel yang nilainya &lt;50 juta<br>
+              • Sparklines menampilkan tren 6 bulan<br>
+              • Data Validation menolak input 150<br>
+              • Slicer memfilter data dengan benar
             </div>
           </div>
         </div>
@@ -372,15 +311,14 @@ student id;name;middle;final
         <div class="grid gap-4 md:grid-cols-2">
           <div class="bg-white p-4 rounded">
             <p class="text-sm font-semibold text-emerald-700">✅ C3 (Apply)</p>
-            <p class="text-xs text-gray-700 mt-1">Mahasiswa mampu menerapkan teknik manajemen data (Import, Text to Columns, Remove Duplicates, Format as Table) dalam konteks akuntansi.</p>
+            <p class="text-xs text-gray-700 mt-1">Mahasiswa mampu menerapkan Conditional Formatting, Sparklines, dan Data Validation dengan Error Alert dalam konteks audit dan visualisasi data keuangan.</p>
           </div>
           <div class="bg-white p-4 rounded">
             <p class="text-sm font-semibold text-emerald-700">✅ C4 (Analyze)</p>
-            <p class="text-xs text-gray-700 mt-1">Mahasiswa mampu menganalisis dan menyajikan informasi keuangan secara terstruktur menggunakan Sorting, Filtering, dan Group/Ungroup.</p>
+            <p class="text-xs text-gray-700 mt-1">Mahasiswa mampu menganalisis efektivitas pelaporan menggunakan Slicers dan Freeze Panes untuk manajemen data berskala besar.</p>
           </div>
         </div>
       </section>
-
     </main>
 
     <!-- Footer -->
@@ -389,23 +327,17 @@ student id;name;middle;final
         <p>Latihan Pertemuan 11 | EXCEL-011</p>
       </div>
     </footer>
+
+    <!-- JavaScript untuk tombol salin -->
+    <script>
+      function copyWeek11Data() {
+        const raw = document.getElementById('rawDataWeek12').innerText;
+        navigator.clipboard.writeText(raw).then(() => {
+          const fb = document.getElementById('copyFeedback12');
+          fb.classList.remove('hidden');
+          setTimeout(() => fb.classList.add('hidden'), 2000);
+        }).catch(err => alert('Gagal menyalin: ' + err));
+      }
+    </script>
   </body>
 </html>
-<script>
-function copyRawData() {
-  const raw = document.getElementById('rawDataBlock1').innerText;
-  navigator.clipboard.writeText(raw).then(() => {
-    const fb = document.getElementById('copyFeedback');
-    fb.classList.remove('hidden');
-    setTimeout(() => fb.classList.add('hidden'), 2000);
-  }).catch(err => alert('Gagal menyalin: ' + err));
-}
-function copyAdditionalData() {
-  const raw = document.getElementById('rawDataAdditional').innerText;
-  navigator.clipboard.writeText(raw).then(() => {
-    const fb = document.getElementById('copyFeedbackAdd');
-    fb.classList.remove('hidden');
-    setTimeout(() => fb.classList.add('hidden'), 2000);
-  }).catch(err => alert('Gagal menyalin: ' + err));
-}
-</script>
